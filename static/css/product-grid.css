@@ -14,6 +14,8 @@
 .product-grid img {
   width: 100%;
   border-radius: 8px;
+  max-width: 500px;
+  min-width: 500px;
 }
 
 .details-meta {

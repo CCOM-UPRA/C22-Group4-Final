@@ -17,15 +17,24 @@ def getProductsModel():
     cur.execute("SELECT * from products WHERE p_status = 'active'")
     results = cur.fetchall()
     for res in results:
-        productList.append({"id": res[0], "name": res[1], "brand": res[2], "desc": res[3],
-                    "wifi": res[4], "video_res": res[5], "color": res[6], "img": res[7],
-                    "stock": res[8], "cost": res[9], "price": res[10], "status": res[11]})
+        productList.append({
+        'id': res[0],
+        'name': res[1],
+        'brand': res[2],
+        'description': res[3],
+        'category': res[4],
+        'price': res[5],
+        'cost': res[6],
+        'stock': res[7],
+        'pound': res[8],
+        'image': res[9],
+        'status': res[10]})
     return productList
 
 
 def getBrandsModel():
     # Simulating grabbing these filters via SQL from the database
-    brands = ["DJI", "Ruko", "Parrot"]
+    brands = ["Higgins", "Tetra", "Purina"]
     return brands
 
 def getColorsModel():

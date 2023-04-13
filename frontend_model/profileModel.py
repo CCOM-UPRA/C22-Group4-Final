@@ -27,8 +27,8 @@ def getUserModel():
 
 
 def editnumbermodel(number):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9602731',
-                           user='sql9602731', password='zChRVJs2Nf', port=3306)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
         cur.execute("UPDATE customer SET c_phone_number = %s WHERE c_id = %s", (number, session['customer']))
@@ -45,8 +45,8 @@ def editnumbermodel(number):
 
 
 def editaddressmodel(aline1, aline2, state, zipcode, city):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9602731',
-                           user='sql9602731', password='zChRVJs2Nf', port=3306)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
         cur.execute("UPDATE customer SET address_line_1 = %s, address_line_2 = %s, c_city = %s,"
@@ -64,8 +64,8 @@ def editaddressmodel(aline1, aline2, state, zipcode, city):
 
 
 def editpaymentmodel(name, c_type, number, exp_date):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9602731',
-                           user='sql9602731', password='zChRVJs2Nf', port=3306)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
         cur.execute("UPDATE customer SET c_card_name = %s, c_card_number = %s, "
@@ -84,8 +84,8 @@ def editpaymentmodel(name, c_type, number, exp_date):
 
 
 def editprofilemodel(fname, lname, email):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9602731',
-                           user='sql9602731', password='zChRVJs2Nf', port=3306)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
         cur.execute("UPDATE customer SET c_first_name = %s, c_last_name = %s, "
