@@ -1,3 +1,10 @@
+Okay obviamente como pueden ver ya hice el Github otravez, porque el otro trabajo lo destruimos con el revolu que le metimos a la misma vez. Entiendo que basicamente estamos empezando desde 0 pero ya lo hicimos una vez (Aunque mal) asi que lo podemos hacer denuevo y mas rapido.
+
+
+
+
+
+-------------------------------------INFORMACION DEL TEMPLATE------------------------------------------------------------------------------------------------
 Template for phase 2 of the Databases course and document for installation of the tools utilized.
 
 In here, you will find a template structure for the organization and view of your project. This part of the phase only requires Frontend but WILL have Database connectivity. Each student group will be provided with the credentials and resources for a database online server.
