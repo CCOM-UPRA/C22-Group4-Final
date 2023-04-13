@@ -37,16 +37,16 @@ def getBrandsModel():
     brands = ["Higgins", "Tetra", "Purina"]
     return brands
 
-def getColorsModel():
-    colors = ["White", "Gray", "Red"]
-    return colors
+# def getColorsModel():
+#     colors = ["White", "Gray", "Red"]
+#     return colors
 
 
-def getVideoResModel():
-    videores = ["480p", "1080p", "4k"]
-    return videores
+# def getVideoResModel():
+#     videores = ["480p", "1080p", "4k"]
+#     return videores
 
 
-def getWifiModel():
-    wifi = ['Yes', 'No']
-    return wifi
+# def getWifiModel():
+#     wifi = ['Yes', 'No']
+#     return wifi

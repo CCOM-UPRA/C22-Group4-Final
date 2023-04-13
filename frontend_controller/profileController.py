@@ -26,8 +26,8 @@ def editprofilecontroller(fname, lname, email):
 def changePass():
     user = []
     # Connect to MySQL database server using credentials provided
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9602731',
-                           user='sql9602731', password='zChRVJs2Nf', port=3306)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
 
     cur = conn.cursor()
     # Select the specific customer whose password you want to hash

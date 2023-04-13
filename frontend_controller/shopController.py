@@ -10,13 +10,13 @@ def getBrands():
     return getBrandsModel()
 
 
-def getColors():
-    return getColorsModel()
+# def getColors():
+#     return getColorsModel()
 
 
-def getVideoRes():
-    return getVideoResModel()
+# def getVideoRes():
+#     return getVideoResModel()
 
 
-def getWifi():
-    return getWifiModel()
+# def getWifi():
+#     return getWifiModel()

@@ -233,7 +233,7 @@
                         </div>
 
 
-                        <div class="shop-widget">
+                        <!-- <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Color</h6>
                             <form>
                                 <ul class="shop-widget-list">
@@ -254,10 +254,10 @@
                                     <span>Search by colors</span>
                                 </button>
                             </form>
-                        </div>
+                        </div> -->
 
 
-                        <div class="shop-widget">
+                        <!-- <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Video Resolution</h6>
                             <form action="{{url_for('filter')}}" method="post">
                                 <ul class="shop-widget-list">
@@ -302,7 +302,7 @@
                                     <span>Search by Wi-Fi</span>
                                 </button>
                             </form>
-                        </div>
+                        </div> -->
 
                         <div class="shop-widget">
                             <button class="shop-widget-btn">
@@ -385,8 +385,8 @@
                                     </h3>
                                     <div class="view-meta">
                                         <p>Brand:<span>{{product['brand']}}</span></p><br>
-                                        <p>Wi-fi: {{product['wifi']}}</p><br>
-                                        <p>Video Res: {{product['video_res']}}</p>
+                                        <p>Category: {{product['category']}}</p><br>
+                                        <p>Pounds: {{product['pound']}}</p>
                                     </div>
                                     <h3 class="view-price">
                                         <span>${{product['price']}}0</span>
@@ -553,3 +553,4 @@
         =======================================-->
     </body>
 </html>
+    

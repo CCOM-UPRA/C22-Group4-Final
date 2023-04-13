@@ -112,13 +112,13 @@ def shop():
     # Find the different filter options for the products by accessing the functions from shopController
     # FILTERS TO BE CONNECTED TO MYSQL BY STUDENTS
     brands = getBrands()
-    colors = getColors()
-    videores = getVideoRes()
-    wifi = getWifi()
+    # colors = getColors()
+    # videores = getVideoRes()
+    # wifi = getWifi()
 
     # Redirect to shop page with the variables used
-    return render_template("shop-4column.html", products=products, brands=brands,
-                           colors=colors, videores=videores, wifi=wifi)
+    return render_template("shop-4column.html", products=products, brands=brands)
+                        #    colors=colors, videores=videores, wifi=wifi)
 
 
 @app.route("/profile")
