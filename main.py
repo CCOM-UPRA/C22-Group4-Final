@@ -73,7 +73,7 @@ def register(message):
     # INSERT
     # INTO
     # Customers(CustomerName, ContactName, Address, City, PostalCode, Country)
-    # VALUES('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+    # VALUES('Cardinal', 'Tomas G. Prihsen', 'Sulin 21', 'Stavanger', '4006', 'Norway');
 
     # Also worth pointing out, password must be hashed before adding to DB:
     # sha256_crypt.encrypt(unhashed_password_here)
@@ -83,15 +83,12 @@ def register(message):
 
 @app.route("/registerinfo", methods=['POST'])
 def registerinfo():
-    # TO BE CONNECTED TO MYSQL BY STUDENTS
-    # Processs the register info
-    contador = 2
+    # Process the register info
     fname = request.form.get('fname')
     lname = request.form.get('lname')
     email = request.form.get('email')
     pass1 = request.form.get('pass1')
     phonenumber = request.form.get('phone')
-    pass2 = pass1
     address = request.form.get('address')
     address2 = request.form.get('address2')
     city = request.form.get('city')
@@ -101,30 +98,40 @@ def registerinfo():
     cardType = request.form.get('cardtype')
     expDate = request.form.get('expdate')
     cardNumber = request.form.get('cardnumber')
-    status = request.form.get('status')
-    contador = contador + 1
-    print(fname, lname, email, pass1, address, address2, city, state, zipCode, cardName, cardType, expDate, cardNumber, status)
+    
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
-    pass1 = sha256_crypt.encrypt(pass1)
-    pass2 = pass1
-    query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode, c_card_name, c_card_type, c_exp_date, c_card_num, c_status) VALUES ({contador},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode},'{cardName}','{cardType}','{expDate}',{cardNumber},'{status}')"
+
+    # Check if the user already exists in the database
+    query = f"SELECT c_id FROM customer WHERE c_email='{email}'"
     cur.execute(query)
-    conn.commit()
+    result = cur.fetchone()
+    
+    if result:
+        # User already exists, so do not proceed with registration
+        return redirect('/login?message=This email is already registered. Please try with a different email.')
 
-    if pass1 == pass2:
-        # Process register info here
-        # Since it will not be functioning right now, let's simulate we registered with our usual login info:
-        if logincontroller2(email=email, password=pass1):
-            return redirect('/register/<message>')
-        else:
-            print("hola")
-
-
-        return redirect('/shop')
     else:
-        return redirect('/register/<message>')
+        # User does not exist, so proceed with registration
+        # Get the next available customer id from the database
+        query = "SELECT MAX(c_id) FROM customer"
+        cur.execute(query)
+        result = cur.fetchone()
+        next_id = result[0] + 1 if result[0] else 1
+
+        # Insert the new customer into the database
+        pass1 = sha256_crypt.encrypt(pass1)
+        query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode, c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({next_id},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode},'{cardName}','{cardType}','{expDate}',{cardNumber})"
+        cur.execute(query)
+        conn.commit()
+
+        # Log in the new user
+        if logincontroller2(email=email, password=pass1):
+            return redirect('/login?message=You have created a new account.')
+        else:
+            return redirect('/shop')
+
 
 
 @app.route("/shop")
@@ -153,6 +160,8 @@ def profile():
     # To open the user's profile page
     # Get user info from getUser() in profileController
     user = getUser()
+
+    print("Prifile:::   ",user)
 
     # Since I specified the variable as user1, that is how it will be called on the html page
     return render_template("profile.html", user=user)

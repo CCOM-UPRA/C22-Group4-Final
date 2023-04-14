@@ -54,67 +54,72 @@
         =======================================-->
         <section class="user-form-part">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-10">
-                        <div class="user-form-logo">
-                            <a href="index.html"><img src="{{url_for('static', filename='images/logo.png')}}" alt="logo"></a>
-                        </div>
-                        <div class="user-form-card">
-                            <div class="user-form-title">
-                                <h2>welcome!</h2>
-                                <p>Use your credentials to access</p>
-                                {% if message != None %}
-                                    <h2 style="color: red">Passwords do not match. Please try again.</h2>
-                                {% endif %}
-                            </div>
-
-
-                            <div style='padding: 0px 30%' class="user-form-group">
+              <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-12 col-lg-12 col-xl-10">
+                  <div class="user-form-logo">
+                    <a href="index.html">
+                      <img src="{{url_for('static', filename='images/logo.png')}}" alt="logo">
+                    </a>
+                  </div>
+                  <div class="user-form-card">
+                    <div class="user-form-title">
+                      <h2>Welcome!</h2>
+                      <p>Use your credentials to access</p>
+                      {% if message != None %}
+                      <h2 style="color: red">Passwords do not match. Please try again.</h2>
+                      {% endif %}
+                    </div>
+          
+                    <div style="padding: 0px 30%" class="user-form-group">
                                 <form class="user-form" action="{{url_for('registerinfo')}}" method="POST">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="fname" placeholder="Enter your First Name">
+                                        <input type="text" class="form-control" name="fname" placeholder="Enter your First Name" required maxlength="50">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="lname" placeholder="Enter your Last Name">
+                                        <input type="text" class="form-control" name="lname" placeholder="Enter your Last Name" required maxlength="50">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="Enter your Email">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter your Email" required maxlength="100">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="pass1" placeholder="Enter your Password">
+                                        <input type="password" class="form-control" name="pass1" placeholder="Enter your Password" required maxlength="100">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="phone" placeholder="Enter your Phone Number">
+                                        <input type="number" class="form-control" name="phone" placeholder="Enter your Phone Number" required min="10" max="10">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="address" placeholder="Enter your Address">
+                                        <input type="text" class="form-control" name="address" placeholder="Enter your Address" required maxlength="100">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="address2" placeholder="Enter your Address Line 2">
+                                        <input type="text" class="form-control" name="address2" placeholder="Enter your Address Line 2" required maxlength="100">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="city" placeholder="Enter your City"
+                                        <input type="text" class="form-control" name="city" placeholder="Enter your City" required maxlength="50">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="state" placeholder="Enter your State"
+                                        <input type="text" class="form-control" name="state" placeholder="Enter your State" required maxlength="50">
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="zipcode" placeholder="Enter your Zipcode"
+                                        <input type="number" class="form-control" name="zipcode" placeholder="Enter your Zipcode" required max="20">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="cardname" placeholder="Enter your Card Name"
+                                        <input type="text" class="form-control" name="cardname" placeholder="Enter your Card Name" required maxlength="100">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="cardtype" placeholder="Enter your Card Type"
+                                        <input type="date" class="form-control" name="expdate" placeholder="Enter your Card Exp" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="date" class="form-control" name="expdate" placeholder="Enter your Card Exp"
+                                        <input type="number" class="form-control" name="cardnumber" placeholder="Enter your Card Number" required max="50">
+                                    </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="cardnumber" placeholder="Enter your Card Number"
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="status" placeholder="Enter your Status"
+                                        <label for="cardtype">Select a Credit Card:</label>
+                                    <select id="cardtype" name="cardtype" placeholder="Enter your Card Type"required>
+                                    <option value="visa">Visa</option>
+                                    <option value="mastercard">Mastercard</option>
+                                    <option value="americanexpress">American Express</option>
+                                    <option value="discover">Discover</option>
+                                    </select>
                                     </div>
                                     <div class="form-button">
                                         <button type="submit">register</button>
