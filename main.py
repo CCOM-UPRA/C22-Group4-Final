@@ -161,8 +161,6 @@ def profile():
     # Get user info from getUser() in profileController
     user = getUser()
 
-    print("Prifile:::   ",user)
-
     # Since I specified the variable as user1, that is how it will be called on the html page
     return render_template("profile.html", user=user)
 
