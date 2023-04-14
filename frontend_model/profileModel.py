@@ -48,7 +48,7 @@ def editaddressmodel(aline1, aline2, state, zipcode, city):
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
-        cur.execute("UPDATE customer SET address_line_1 = %s, address_line_2 = %s, c_city = %s,"
+        cur.execute("UPDATE customer SET c_address_line_1 = %s, c_address_line_2 = %s, c_city = %s,"
                     "c_state = %s, c_zipcode = %s WHERE c_id = %s", (aline1, aline2, city, state, zipcode, session['customer']))
         conn.commit()
         return 0
@@ -87,7 +87,7 @@ def editprofilemodel(fname, lname, email):
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     try:
-        cur.execute("UPDATE customer SET c_first_name = %s, c_last_name = %s, "
+        cur.execute("UPDATE customer SET c_name = %s, c_last_name = %s, "
                     "c_email = %s WHERE c_id = %s",
                     (fname, lname, email, session['customer']))
         conn.commit()
