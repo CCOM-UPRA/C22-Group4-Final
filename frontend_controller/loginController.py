@@ -17,3 +17,7 @@ def logincontroller(email, password):
     else:
         # If user doesn't exist, return to login and trigger error message
         return redirect("/message")
+
+def logincontroller2(email, password):
+    return loginmodel(email=email, password=password)
+    # Check from loginModel's loginmodel() if user exists

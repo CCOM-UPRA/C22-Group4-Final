@@ -10,6 +10,8 @@ from frontend_controller.shopController import *
 app = Flask(__name__, template_folder='frontend/')
 app.secret_key = 'akeythatissecret'
 
+contador = 2
+
 # In this template, you will usually find functions with comments tying them to a specific controller
 # main.py accesses the frontend folders
 # Every controller accesses its relevant model and will send the information back to this Flask app
@@ -62,9 +64,11 @@ def login():
 def register(message):
     # TO BE CONNECTED TO MYSQL BY STUDENTS
     # Redirects to register page
-
     # First must verify if user is already in DB, if not, then proceed with register
-
+    # fname = request.form.get('fname')
+    # lname = request.form.get('lname')
+    # email = request.form.get('email')
+    # print(fname, lname, email)
     # Example of an INSERT query:
     # INSERT
     # INTO
@@ -81,19 +85,42 @@ def register(message):
 def registerinfo():
     # TO BE CONNECTED TO MYSQL BY STUDENTS
     # Processs the register info
+    contador = 2
     fname = request.form.get('fname')
     lname = request.form.get('lname')
     email = request.form.get('email')
     pass1 = request.form.get('pass1')
-    pass2 = request.form.get('pass2')
+    phonenumber = request.form.get('phone')
+    pass2 = pass1
+    address = request.form.get('address')
+    address2 = request.form.get('address2')
+    city = request.form.get('city')
+    state = request.form.get('state')
+    zipCode = request.form.get('zipcode')
+    cardName = request.form.get('cardname')
+    cardType = request.form.get('cardtype')
+    expDate = request.form.get('expdate')
+    cardNumber = request.form.get('cardnumber')
+    status = request.form.get('status')
+    contador = contador + 1
+    print(fname, lname, email, pass1, address, address2, city, state, zipCode, cardName, cardType, expDate, cardNumber, status)
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
+    cur = conn.cursor()
+    pass1 = sha256_crypt.encrypt(pass1)
+    pass2 = pass1
+    query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode, c_card_name, c_card_type, c_exp_date, c_card_num, c_status) VALUES ({contador},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode},'{cardName}','{cardType}','{expDate}',{cardNumber},'{status}')"
+    cur.execute(query)
+    conn.commit()
 
     if pass1 == pass2:
         # Process register info here
         # Since it will not be functioning right now, let's simulate we registered with our usual login info:
-        session['amount'] = 0
-        email = 'javier.quinones3@upr.edu'
-        passcode = 'pass1234'
-        logincontroller(email=email, password=passcode)
+        if logincontroller2(email=email, password=pass1):
+            return redirect('/register/<message>')
+        else:
+            print("hola")
+
 
         return redirect('/shop')
     else:

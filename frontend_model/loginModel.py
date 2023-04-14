@@ -23,6 +23,7 @@ def loginmodel(email, password):
     # sha256_crypt.verify(password_unhashed, password_hashed) = this is what is used to compare an unhashed and hashed password
 
     for u in user:
+        print(user)
         print("Hashed password from user: ", u['password'])
         if email == u['email'] and sha256_crypt.verify(password, u['password']) is True:
             session['customer'] = u['id']
