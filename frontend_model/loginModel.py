@@ -28,6 +28,6 @@ def loginmodel(email, password):
             session['customer'] = u['id']
             # Create the session['customer'] saving the customer ID if user is found
             return "true"
-        else:
-            # If it didn't find user
-            return "false"
+
+    # If it didn't find user
+    return "false"
