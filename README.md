@@ -49,7 +49,7 @@ The following functions have been purposefully left intact for the students to w
 * Register (Database connection)------Completo
 * Change password (DB)---------Completo
 * Filters and sorting (DB or potential Python data structures)
-* Edit cart and remove from cart (Sessions)
+* Edit cart and remove from cart (Sessions)-------- Half
 * Processing an order (DB)
 * Invoice (DB)
 * View orders (DB)
