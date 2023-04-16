@@ -47,7 +47,7 @@ The following functions are working in the template:
 The following functions have been purposefully left intact for the students to work on:
 
 * Register (Database connection)------Completo
-* Change password (DB)
+* Change password (DB)---------Completo
 * Filters and sorting (DB or potential Python data structures)
 * Edit cart and remove from cart (Sessions)
 * Processing an order (DB)
