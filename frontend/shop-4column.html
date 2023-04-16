@@ -338,10 +338,10 @@
                                     </div>
                                     <div class="product-content">
                                         <h6 class="product-name">
-                                            <a href="product-video.html">{{product['name']}}</a>
+                                            <p>{{product['name']}}</p>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>${{product['price']}}0</span>
+                                            <span>${{product['price']}}</span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -381,7 +381,7 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="view-details">
                                     <h3 class="view-name">
-                                        <a href="product-video.html">{{product['name']}}</a>
+                                        <p>{{product['name']}}</p>
                                     </h3>
                                     <div class="view-meta">
                                         <p>Brand:<span>{{product['brand']}}</span></p><br>
@@ -389,7 +389,7 @@
                                         <p>Pounds: {{product['pound']}}</p>
                                     </div>
                                     <h3 class="view-price">
-                                        <span>${{product['price']}}0</span>
+                                        <span>${{product['price']}}</span>
                                     </h3>
                                     <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                      <form action="{{url_for('addcart')}}" method="post">
@@ -538,6 +538,7 @@
                 document.getElementById('submit').onclick = function(){
                     document.getElementById('quantity').value = document.getElementById('quantity1').value;
             };
+        }
         </script>
 
         <script>
