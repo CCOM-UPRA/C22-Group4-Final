@@ -53,6 +53,18 @@ def deleteCartItemModel(item_id):
             # Remove the item from the cart
             del session['cart'][str(item_id)]
 
+def editCartModel(id, quantity):
+    if 'cart' in session:
+        if id in session['cart']:
+            print(session)
+            item = session['cart'][id]
+            old_quantity = int(item['quantity'])
+            item['quantity'] = str(quantity)
+            item['total_price'] = float(item['price']) * int(item['quantity'])
+            session['amount'] += (int(item['quantity']) - old_quantity)
+            session['total'] += (float(item['price']) * int(item['quantity']) - float(item['price']) * old_quantity)
+
+
 
 
 

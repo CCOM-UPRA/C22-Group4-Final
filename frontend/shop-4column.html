@@ -140,15 +140,16 @@
                             <p>Unit Price - ${{item['price']}}</p>
                         </div>
                         <div class="cart-action-group">
-                            <div class="product-action">
-                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item['quantity']}}">
-                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                            </div>
-                             <form action="{{url_for('editcart')}}" method="post">
-                                    <button class="action">Edit</button>
-                             </form>
-                            <h6>${{item['total_price']}}0</h6>
+                            <form action="{{url_for('editcart')}}" method="post">
+                                <input type="hidden" name="id" value="{{key}}">
+                                <div class="product-action">
+                                    <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item['quantity']}}">
+                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                </div>
+                            </form>
+                            
+                            <h6>${{item['total_price']}}</h6>
                         </div>
                     </div>
                 </li>

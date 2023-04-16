@@ -261,11 +261,11 @@ def delete(id):
 
 @app.route("/editcart", methods=["POST"])
 def editcart():
-    # TO BE ADDED BY STUDENTS (Editing the session variable cart)
-    id = request.form.get('p_id')
-    amount = request.form.get('quantity')
-    print("This is the amount of a product: ",amount)
-    print("This is the id of the product: ", id)
+    id = request.form.get("id")
+    print("Este debe ser el id:",id)
+    quantity = request.form.get("quantity")
+    print("This is the amount:", quantity)
+    editCartModel(id=id, quantity=quantity)
     return redirect(request.referrer)
 
 
