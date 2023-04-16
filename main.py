@@ -212,33 +212,24 @@ def password():
 
 @app.route('/editpassword', methods=['POST'])
 def editpassword():
-    print("Hola1")
+    print("Beggining")
     email = request.form.get('email_o')
     old_password = request.form.get('pass_o')
     new_password = request.form.get('pass_n')
     new_password_confirm = request.form.get('pass_n1')
-    # Verificar si new_password es igual a new_password_confirm
-
-    print("Hola2")
-    # Hash the passwords
-    old_password_hash = sha256_crypt.hash(old_password)
-    new_password_hash = sha256_crypt.hash(new_password)
-    new_password_confirm_hash = sha256_crypt.hash(new_password_confirm)
-
-    print(email)
-
 
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     cur.execute(f"SELECT c_password from customer WHERE c_email = '{email}'")
     customer_data = cur.fetchone()[0]
-    if old_password_hash == customer_data:
-        print("Hellooooooooooooooooooooooooooooooooooooooooo", customer_data)
-    if sha256_crypt.verify(old_password_hash, customer_data):
 
-        if new_password_hash == new_password_confirm_hash:
+    if sha256_crypt.verify(old_password, customer_data):
+
+        if new_password == new_password_confirm:
                 # Update the password in the database
+                # Hashing the password
+                new_password_hash = sha256_crypt.hash(new_password)
                 cur.execute(f"UPDATE customer SET c_password='{new_password_hash}' WHERE c_email='{email}'")
                 conn.commit()
                 return redirect('/profile')
@@ -246,6 +237,7 @@ def editpassword():
             return redirect('/password?error=1')
     else:
         return redirect('/password?error=2')
+
 
 
 

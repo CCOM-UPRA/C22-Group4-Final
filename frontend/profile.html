@@ -369,7 +369,12 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">card type</label>
-                            <input class="form-control" name="card_type" type="text" value="{{user1['card_type']}}">
+                        <select class = "form-control" id="card_type" name="card_type" placeholder="{{user1['card_type']}}" required>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">Mastercard</option>
+                        <option value="americanexpress">American Express</option>
+                        <option value="discover">Discover</option>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">expiration date (MM/DD/YYYY)</label>
