@@ -137,7 +137,7 @@
                     <div class="cart-info-group">
                         <div class="cart-info">
                             <h6><a href="product-single.html">{{item['name']}}</a></h6>
-                            <p>Unit Price - ${{item['price']}}0</p>
+                            <p>Unit Price - ${{item['price']}}</p>
                         </div>
                         <div class="cart-action-group">
                             <div class="product-action">
@@ -391,7 +391,7 @@
                                     <h3 class="view-price">
                                         <span>${{product['price']}}</span>
                                     </h3>
-                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
+                                    <p class="view-desc">{{product['description']}}</p>
                                      <form action="{{url_for('addcart')}}" method="post">
                                          <input type="hidden" name="p_id" value="{{product['id']}}">
                                                <input type="hidden" name="name" value="{{product['name']}}">

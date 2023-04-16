@@ -11,12 +11,11 @@ def addCartController(p_id, name, image, price, quantity, total):
     # The add happens over at the cartModel
     dictitems = {p_id: {'name': name, 'image': image, 'price': price, 'quantity': quantity,
                         'total_price': total}}
+
     return addCartModel(dictitems)
 
-
-def deleteCartItem():
-    # FOR STUDENT TO ADD
-    return deleteCartItemModel()
+def deleteCartItem(item_id):
+    return deleteCartItemModel(item_id)
 
 
 

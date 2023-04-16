@@ -39,9 +39,21 @@ def addCartModel(dictitems):
     return
 
 
-def deleteCartItemModel():
-    # FOR STUDENT TO ADD
-    return
+def deleteCartItemModel(item_id):
+    # Check if cart exists
+    if 'cart' in session:
+
+        # Check if the item exists in the cart with the ID
+        if str(item_id) in session['cart']:
+            # Updates before deleting the item from the cart
+            item = session['cart'][str(item_id)]
+            session['amount'] -= int(item['quantity'])
+            session['total'] -= float(item['total_price'])
+
+            # Remove the item from the cart
+            del session['cart'][str(item_id)]
+
+
 
 
 

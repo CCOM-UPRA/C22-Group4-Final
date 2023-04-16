@@ -62,22 +62,7 @@ def login():
 @app.route("/register/", defaults={'message': None})
 @app.route('/register/<message>')
 def register(message):
-    # TO BE CONNECTED TO MYSQL BY STUDENTS
-    # Redirects to register page
-    # First must verify if user is already in DB, if not, then proceed with register
-    # fname = request.form.get('fname')
-    # lname = request.form.get('lname')
-    # email = request.form.get('email')
-    # print(fname, lname, email)
-    # Example of an INSERT query:
-    # INSERT
-    # INTO
-    # Customers(CustomerName, ContactName, Address, City, PostalCode, Country)
-    # VALUES('Cardinal', 'Tomas G. Prihsen', 'Sulin 21', 'Stavanger', '4006', 'Norway');
 
-    # Also worth pointing out, password must be hashed before adding to DB:
-    # sha256_crypt.encrypt(unhashed_password_here)
-    # This is the example of hashing I utilize, but there are many forms of using hashing/encryption of passwords
     return render_template('register.html', message=message)
 
 
@@ -144,11 +129,7 @@ def shop():
     getCart()
 
     # Find the different filter options for the products by accessing the functions from shopController
-    # FILTERS TO BE CONNECTED TO MYSQL BY STUDENTS
     brands = getBrands()
-    # colors = getColors()
-    # videores = getVideoRes()
-    # wifi = getWifi()
 
     # Redirect to shop page with the variables used
     return render_template("shop-4column.html", products=products, brands=brands)
@@ -213,7 +194,6 @@ def password():
 
 @app.route('/editpassword', methods=['POST'])
 def editpassword():
-    print("Beggining")
     email = request.form.get('email_o')
     old_password = request.form.get('pass_o')
     new_password = request.form.get('pass_n')
@@ -272,16 +252,20 @@ def addcart():
     return redirect(request.referrer)
 
 
-@app.route("/delete")
-def delete():
-    # TO BE ADDED BY STUDENTS (Editing the session variable cart)
-    deleteCartItem()
+@app.route("/delete/<int:id>")
+def delete(id):
+    deleteCartItem(item_id = id)
     return redirect(request.referrer)
+
 
 
 @app.route("/editcart", methods=["POST"])
 def editcart():
     # TO BE ADDED BY STUDENTS (Editing the session variable cart)
+    id = request.form.get('p_id')
+    amount = request.form.get('quantity')
+    print("This is the amount of a product: ",amount)
+    print("This is the id of the product: ", id)
     return redirect(request.referrer)
 
 
