@@ -44,42 +44,38 @@ def editnumbermodel(number):
 
 
 def editaddressmodel(aline1, aline2, state, zipcode, city):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
-                           user='sql9607922', password='d7cwbda3De', port=3306)
-    cur = conn.cursor()
+    conn = None
     try:
-        cur.execute("UPDATE customer SET c_address_line_1 = %s, c_address_line_2 = %s, c_city = %s,"
+        conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
+        cur = conn.cursor()
+        cur.execute("UPDATE customer SET c_address_line1 = %s, c_address_line2 = %s, c_city = %s,"
                     "c_state = %s, c_zipcode = %s WHERE c_id = %s", (aline1, aline2, city, state, zipcode, session['customer']))
         conn.commit()
         return 0
-
-    except pymysql.Error as error:
-        print(error)
-        return 0
-
-    else:
-        cur.close()
+    except pymysql.Error as e:
+        print(f"Error: {e}")
         return 1
+    finally:
+        if conn:
+            conn.close()
+
 
 
 def editpaymentmodel(name, c_type, number, exp_date):
-    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
-                           user='sql9607922', password='d7cwbda3De', port=3306)
-    cur = conn.cursor()
+    conn = None
     try:
-        cur.execute("UPDATE customer SET c_card_name = %s, c_card_number = %s, "
-                    "c_card_type = %s, c_exp_date = %s WHERE c_id = %s",
-                    (name, number, c_type, exp_date, session['customer']))
+        conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
+        cur = conn.cursor()
+        cur.execute("UPDATE customer SET c_card_name = %s, c_card_num = %s, "
+                    "c_card_type = %s, c_exp_date = %s WHERE c_id = %s", (name, number, c_type, exp_date, session['customer']))
         conn.commit()
         return 0
-
-    except pymysql.Error as error:
-        print(error)
-        return 0
-
-    else:
-        cur.close()
+    except pymysql.Error as e:
+        print(f"Error: {e}")
         return 1
+    finally:
+        if conn:
+            conn.close()
 
 
 def editprofilemodel(fname, lname, email):
