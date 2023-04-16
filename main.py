@@ -180,7 +180,6 @@ def editinfo():
         zipcode = request.form.get('zipcode')
         city = request.form.get('city')
 
-        print("1",aline1,aline2)
         editaddresscontroller(aline1, aline2, state, zipcode, city)
 
     # If editing payment info -> profileController

@@ -12,7 +12,6 @@ def editnumbercontroller(number):
 
 
 def editaddresscontroller(aline1, aline2, state, zipcode, city):
-    print("2",aline1,aline2)
     return editaddressmodel(aline1, aline2, state, zipcode, city)
 
 
