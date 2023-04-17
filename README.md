@@ -5,8 +5,7 @@ Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro traba
 
 
 ---------------------INFORMACION DEL TEMPLATE------------------------------------------------------------------------------------------------
-.
-.
+--
 
 
 
