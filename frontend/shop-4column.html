@@ -197,15 +197,16 @@
 
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Price</h6>
-                            <form>
+                            <form action="{{ url_for('filter') }}" method="get">
                                 <div class="shop-widget-group">
-                                    <input type="text" placeholder="Min - 00">
-                                    <input type="text" placeholder="Max - 5k">
+                                    <input type="text" placeholder="Min - 00" name="min_price">
+                                    <input type="text" placeholder="Max - 5k" name="max_price">
                                 </div>
                                 <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
-                                    <span>search</span>
+                                    <span>Search</span>
                                 </button>
+                                <input type="hidden" name="filter_type" value="price">
                             </form>
                         </div>
 
@@ -230,85 +231,15 @@
                                 </button>
                             </form>
                         </div>
-                        
 
-
-                        <!-- <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Color</h6>
-                            <form>
-                                <ul class="shop-widget-list">
-
-                        {% for color in colors %}
-                            <li>
-                                <div class="shop-widget-content">
-                                    <input type="checkbox" id="tag3">
-                                    <label for="tag1">{{color}}</label>
-                                </div>
-
-                            </li>
-                        {% endfor %}
-
-                         </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="fas fa-search"></i>
-                                    <span>Search by colors</span>
-                                </button>
-                            </form>
-                        </div> -->
-
-
-                        <!-- <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Video Resolution</h6>
-                            <form action="{{url_for('filter')}}" method="post">
-                                <ul class="shop-widget-list">
-
-                        {% for res in videores %}
-                            <li>
-                                <div class="shop-widget-content">
-                                    <input type="checkbox" id="{{res}}" name="videores" value="{{res}}">
-                                    <label for="tag1">{{res}}</label>
-                                </div>
-
-                            </li>
-                        {% endfor %}
-
-                         </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="fas fa-search"></i>
-                                    <span>Search by Resolution</span>
-                                </button>
-                            </form>
-                        </div>
-
-
-                        <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Wi-Fi Availability</h6>
-                            <form>
-                                <ul class="shop-widget-list">
-
-                        {% for w in wifi %}
-                            <li>
-                                <div class="shop-widget-content">
-                                    <input type="checkbox" id="tag4" name="check" onclick="onlyOne(this)">
-                                    <label for="tag1">{{w}}</label>
-                                </div>
-
-                            </li>
-                        {% endfor %}
-
-                         </ul>
-                                <button class="shop-widget-btn">
-                                    <i class="fas fa-search"></i>
-                                    <span>Search by Wi-Fi</span>
-                                </button>
-                            </form>
-                        </div> -->
-
-                        <div class="shop-widget">
+                        <form method="GET" action="/filter">
+                            <div class="shop-widget">
+                            <input type="hidden" name="filter_type" value="all">
                             <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
                                     <span>Search by All Filters</span>
                                 </button>
+                            </form>
                         </div>
                     </div>
 

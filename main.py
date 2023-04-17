@@ -6,6 +6,7 @@ from frontend_controller.loginController import *
 from frontend_controller.ordersController import *
 from frontend_controller.profileController import *
 from frontend_controller.shopController import *
+import decimal
 
 app = Flask(__name__, template_folder='frontend/')
 app.secret_key = 'akeythatissecret'
@@ -307,14 +308,25 @@ from flask import request
 
 @app.route("/filter")
 def filter():
+    # Guarda el tipo de boton que fue presionado
     filter_type = request.args.get("filter_type")
+
     if filter_type == "brand":
+        # Si el producto tiene el mismo brand que el usuario selecciono, guardalo en filtered_products
         selected_brands = request.args.getlist("brand")
-        print("IM IN:", selected_brands)
         filtered_products = [p for p in getProducts() if p["brand"] in selected_brands]
-        return render_template("shop-4column.html", products=filtered_products, brands=getBrands())
+    elif filter_type == "price":
+        # Si el producto tiene un precio entre esos dos valores que el usuario selecciono, guardalo en filtered_products
+        min_price = float(request.args.get("min_price", 0))
+        max_price = float(request.args.get("max_price", float("inf")))
+        filtered_products = [p for p in getProducts() if min_price <= float(p["price"]) <= max_price]
     else:
-        return "Invalid filter type"
+        # Si el usuario presiono filter by all muestra todos los productos
+        filtered_products = getProducts()
+    return render_template("shop-4column.html", products=filtered_products, brands=getBrands())
+
+
+
 
 
 
