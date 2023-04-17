@@ -121,7 +121,6 @@ def registerinfo():
 
 @app.route("/shop")
 def shop():
-    # This is the shop's Flask portion
     # First we receive the list of products by accessing getProducts() from shopController
     products = getProducts()
 
@@ -304,10 +303,20 @@ def invoice():
     return render_template("invoice.html", order=order, products=products, amount=amount)
 
 
+from flask import request
+
 @app.route("/filter")
 def filter():
-    # TO BE CONNECTED TO MYSQL BY STUDENTS
-    return redirect("/shop")
+    filter_type = request.args.get("filter_type")
+    if filter_type == "brand":
+        selected_brands = request.args.getlist("brand")
+        print("IM IN:", selected_brands)
+        filtered_products = [p for p in getProducts() if p["brand"] in selected_brands]
+        return render_template("shop-4column.html", products=filtered_products, brands=getBrands())
+    else:
+        return "Invalid filter type"
+
+
 
 
 # Press the green button in the gutter to run the script.

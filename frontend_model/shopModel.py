@@ -50,3 +50,28 @@ def getBrandsModel():
 # def getWifiModel():
 #     wifi = ['Yes', 'No']
 #     return wifi
+
+def filterProductsModel(brand=None):
+    productList = []
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
+                           user='sql9607922', password='d7cwbda3De', port=3306)
+    cur = conn.cursor()
+    if brand:
+        cur.execute("SELECT * from products WHERE p_status = 'active' AND brand = %s", (brand,))
+    else:
+        cur.execute("SELECT * from products WHERE p_status = 'active'")
+    results = cur.fetchall()
+    for res in results:
+        productList.append({
+        'id': res[0],
+        'name': res[1],
+        'brand': res[2],
+        'description': res[3],
+        'category': res[4],
+        'price': res[5],
+        'cost': res[6],
+        'stock': res[7],
+        'pound': res[8],
+        'image': res[9],
+        'status': res[10]})
+    return productList

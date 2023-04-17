@@ -212,26 +212,25 @@
 
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Brand</h6>
-                            <form>
+                            <form method="GET" action="/filter">
                                 <ul class="shop-widget-list">
-
-                        {% for brand in brands %}
-                            <li>
-                                <div class="shop-widget-content">
-                                    <input type="checkbox" id="tag1">
-                                    <label for="tag1">{{brand}}</label>
-                                </div>
-
-                            </li>
-                        {% endfor %}
-
-                         </ul>
-                                <button class="shop-widget-btn">
+                                    {% for brand in brands %}
+                                        <li>
+                                            <div class="shop-widget-content">
+                                                <input type="checkbox" id="tag1" name="brand" value="{{brand}}">
+                                                <label for="{{brand}}">{{brand}}</label>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                                <input type="hidden" name="filter_type" value="brand">
+                                <button type="submit" class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
                                     <span>Search by brands</span>
                                 </button>
                             </form>
                         </div>
+                        
 
 
                         <!-- <div class="shop-widget">
