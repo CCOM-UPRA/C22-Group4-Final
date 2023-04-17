@@ -190,20 +190,20 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="view-details">
                                     <h3 class="view-name">
-                                        <a href="product-video.html">{{item['name']}}</a>
+                                        <p>{{item['name']}}</p>
                                     </h3>
                                     <div class="view-meta">
                                         <p>Brand:<span>{{item['brand']}}</span></p>
                                     </div>
                                     <div class="view-meta">
-                                        <p>Wi-fi: {{item['wifi']}}</p>
+                                        <p>Category: {{item['category']}}</p>
                                     </div>
                                     <div class="view-meta">
-                                        <p>Video Res: {{item['videores']}}</p>
+                                        <p>Pounds: {{item['pound']}}</p>
                                     </div>
                                     <h3 class="view-price">
-                                        <del>${{item['cost']}}0</del>
-                                        <span>${{item['price']}}0</span>
+                                        <!-- <del>${{item['cost']}}</del> -->
+                                        <span>${{item['price']}}</span>
                                     </h3>
                                     <p class="view-desc">{{item['desc']}}</p>
                                     <form action="{{url_for('checkout')}}" method="post">
@@ -233,7 +233,7 @@
                                     <ul>
                                         <li>
                                             <span>Total</span>
-                                            <span>${{session['total']}}0</span>
+                                            <span>${{session['total']}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -377,7 +377,12 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">card type</label>
-                            <input class="form-control" name="card_type" type="text" value="{{user1['card_type']}}">
+                            <select class = "form-control" id="card_type" name="card_type" placeholder="{{user1['card_type']}}" required>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">Mastercard</option>
+                            <option value="americanexpress">American Express</option>
+                            <option value="discover">Discover</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label">expiration date (MM/DD/YYYY)</label>
