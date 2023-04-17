@@ -265,7 +265,7 @@ def editcart():
     print("Este debe ser el id:",id)
     quantity = request.form.get("quantity")
     print("This is the amount:", quantity)
-    editCartModel(id=id, quantity=quantity)
+    editCartController(id=id, quantity=quantity)
     return redirect(request.referrer)
 
 

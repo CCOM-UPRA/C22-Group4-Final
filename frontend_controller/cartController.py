@@ -14,6 +14,10 @@ def addCartController(p_id, name, image, price, quantity, total):
 
     return addCartModel(dictitems)
 
+def editCartController(id, quantity):
+    return editCartModel(id=id, quantity=quantity)
+    
+
 def deleteCartItem(item_id):
     return deleteCartItemModel(item_id)
 
