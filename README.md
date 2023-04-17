@@ -7,6 +7,12 @@ Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro traba
 ---------------------INFORMACION DEL TEMPLATE------------------------------------------------------------------------------------------------
 
 
+Pepito: pass
+Javier: pass1234
+test: pass1
+felipe: pass1234
+pedro: pass1234
+
 
 Template for phase 2 of the Databases course and document for installation of the tools utilized.
 
