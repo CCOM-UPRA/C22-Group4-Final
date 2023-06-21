@@ -108,9 +108,13 @@ def registerinfo():
 
         # Insert the new customer into the database
         pass1 = sha256_crypt.encrypt(pass1)
-        query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode, c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({next_id},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode},'{cardName}','{cardType}','{expDate}',{cardNumber})"
+        query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode) VALUES ({next_id},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode})"
         cur.execute(query)
+        query2 = f"INSERT INTO Payment(c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({cardName},'{cardType}','{expDate}',{cardNumber})"
+        cur.execute(query2)
         conn.commit()
+
+        # query2 = f"INSERT INTO Payment(c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({cardName},'{cardType}','{expDate}',{cardNumber})
 
         # Log in the new user
         if logincontroller2(email=email, password=pass1):

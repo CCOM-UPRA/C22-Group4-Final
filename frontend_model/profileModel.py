@@ -15,9 +15,14 @@ def getUserModel():
     # Save tuple information in a list
     for users in userFound:
         user.append({"id": users[0], "name": users[1], "last_name": users[2], "email": users[3], "password": users[4],
-                    "phone_number": users[5], "address_line1": users[6], "address_line2": users[7], "city": users[8], "state": users[9], "zipcode": users[10],
-                     "card_name": users[11], "card_type": users[12], "exp_date": users[13], "card_number": users[14], "status": users[15]})
+                    "phone_number": users[5], "address_line1": users[6], "address_line2": users[7], "city": users[8], "state": users[9], "zipcode": users[10]})
 
+    cur.execute("SELECT * from Payment WHERE c_id = %s", session['customer'])
+    userFound = cur.fetchall()
+    for users in userFound:
+        user.append({"card_name": users[0], "card_type": users[1], "exp_date": users[2], "card_number": users[3], "status": users[4]})
+    
+    
     # To access user info:
 
         # for u in user:
@@ -66,8 +71,8 @@ def editpaymentmodel(name, c_type, number, exp_date):
     try:
         conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
         cur = conn.cursor()
-        cur.execute("UPDATE customer SET c_card_name = %s, c_card_num = %s, "
-                    "c_card_type = %s, c_exp_date = %s WHERE c_id = %s", (name, number, c_type, exp_date, session['customer']))
+        cur.execute("UPDATE Payment SET card_name = %s, card_num = %s, "
+                    "card_type = %s, exp_date = %s WHERE c_id = %s", (name, number, c_type, exp_date, session['customer']))
         conn.commit()
         return 0
     except pymysql.Error as e:
