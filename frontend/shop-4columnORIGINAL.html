@@ -118,50 +118,48 @@
             <div class="cart-header">
                 <div class="cart-total">
                     <i class="fas fa-shopping-basket"></i>
-                    <span>total item ({{ session['amount'] }})</span>
+                    <span>total item ({{session['amount']}})</span>
                 </div>
                 <button class="cart-close"><i class="icofont-close"></i></button>
             </div>
             <ul class="cart-list">
+
                 {% if session['cart'] %}
-                {% for key, item in session['cart'].items() %}
+                    {% for key, item in session['cart'].items() %}
                 <li class="cart-item">
                     <div class="cart-media">
-                        <a href="static/images/product-images/{{ item['image'] }}">
-                            <img src="static/images/product-images/{{ item['image'] }}" alt="product">
-                        </a>
-                        <form action="{{ url_for('delete', id=key) }}">
-                            <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                        <a href="static/images/product-images/{{item['image']}}">
+                            <img src="static/images/product-images/{{item['image']}}" alt="product"></a>
+                        <form action="{{url_for('delete', id=key)}}">
+                        <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </div>
                     <div class="cart-info-group">
                         <div class="cart-info">
-                            <h6><a href="product-single.html">{{ item['name'] }}</a></h6>
-                            <p>Unit Price - ${{ item['price'] }}</p>
+                            <h6><a href="product-single.html">{{item['name']}}</a></h6>
+                            <p>Unit Price - ${{item['price']}}0</p>
                         </div>
                         <div class="cart-action-group">
-                            <form action="{{ url_for('editcart') }}" method="post">
-                                <input type="hidden" name="id" value="{{ key }}">
-                                <div class="product-action">
-                                    <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item['quantity'] }}" readonly>
-                                    <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
-                                </div>
-
-                                <button class="save-button" type="submit">Edit</button>
-                            </form>
-                            <h6>${{ item['total_price'] }}0</h6>
+                            <div class="product-action">
+                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item['quantity']}}">
+                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                            </div>
+                             <form action="{{url_for('editcart')}}" method="post">
+                                    <button class="action">Edit</button>
+                             </form>
+                            <h6>${{item['total_price']}}0</h6>
                         </div>
                     </div>
                 </li>
-                {% endfor %}
+                    {% endfor %}
                 {% endif %}
             </ul>
             {% if 'cart' in session %}
             <div class="cart-footer">
-                <a class="cart-checkout-btn" href="{{ url_for('checkout') }}">
+                <a class="cart-checkout-btn" href="{{url_for('checkout')}}">
                     <span class="checkout-label">Proceed to Checkout</span>
-                    <span class="checkout-price">${{ session['total'] }}0</span>
+                    <span class="checkout-price">${{session['total']}}0</span>
                 </a>
             </div>
             {% endif %}
@@ -198,49 +196,119 @@
 
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Price</h6>
-                            <form action="{{ url_for('filter') }}" method="get">
+                            <form>
                                 <div class="shop-widget-group">
-                                    <input type="text" placeholder="Min - 00" name="min_price">
-                                    <input type="text" placeholder="Max - 5k" name="max_price">
+                                    <input type="text" placeholder="Min - 00">
+                                    <input type="text" placeholder="Max - 5k">
                                 </div>
                                 <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
-                                    <span>Search</span>
+                                    <span>search</span>
                                 </button>
-                                <input type="hidden" name="filter_type" value="price">
                             </form>
                         </div>
 
 
                         <div class="shop-widget">
                             <h6 class="shop-widget-title">Filter by Brand</h6>
-                            <form method="GET" action="/filter">
+                            <form>
                                 <ul class="shop-widget-list">
-                                    {% for brand in brands %}
-                                        <li>
-                                            <div class="shop-widget-content">
-                                                <input type="checkbox" id="tag1" name="brand" value="{{brand}}">
-                                                <label for="{{brand}}">{{brand}}</label>
-                                            </div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                                <input type="hidden" name="filter_type" value="brand">
-                                <button type="submit" class="shop-widget-btn">
+
+                        {% for brand in brands %}
+                            <li>
+                                <div class="shop-widget-content">
+                                    <input type="checkbox" id="tag1">
+                                    <label for="tag1">{{brand}}</label>
+                                </div>
+
+                            </li>
+                        {% endfor %}
+
+                         </ul>
+                                <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
                                     <span>Search by brands</span>
                                 </button>
                             </form>
                         </div>
 
-                        <form method="GET" action="/filter">
-                            <div class="shop-widget">
-                            <input type="hidden" name="filter_type" value="all">
+
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title">Filter by Color</h6>
+                            <form>
+                                <ul class="shop-widget-list">
+
+                        {% for color in colors %}
+                            <li>
+                                <div class="shop-widget-content">
+                                    <input type="checkbox" id="tag3">
+                                    <label for="tag1">{{color}}</label>
+                                </div>
+
+                            </li>
+                        {% endfor %}
+
+                         </ul>
+                                <button class="shop-widget-btn">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search by colors</span>
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title">Filter by Video Resolution</h6>
+                            <form action="{{url_for('filter')}}" method="post">
+                                <ul class="shop-widget-list">
+
+                        {% for res in videores %}
+                            <li>
+                                <div class="shop-widget-content">
+                                    <input type="checkbox" id="{{res}}" name="videores" value="{{res}}">
+                                    <label for="tag1">{{res}}</label>
+                                </div>
+
+                            </li>
+                        {% endfor %}
+
+                         </ul>
+                                <button class="shop-widget-btn">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search by Resolution</span>
+                                </button>
+                            </form>
+                        </div>
+
+
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title">Filter by Wi-Fi Availability</h6>
+                            <form>
+                                <ul class="shop-widget-list">
+
+                        {% for w in wifi %}
+                            <li>
+                                <div class="shop-widget-content">
+                                    <input type="checkbox" id="tag4" name="check" onclick="onlyOne(this)">
+                                    <label for="tag1">{{w}}</label>
+                                </div>
+
+                            </li>
+                        {% endfor %}
+
+                         </ul>
+                                <button class="shop-widget-btn">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search by Wi-Fi</span>
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="shop-widget">
                             <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
                                     <span>Search by All Filters</span>
                                 </button>
-                            </form>
                         </div>
                     </div>
 
@@ -261,8 +329,8 @@
                                 <div class="product-card">
                                     <div class="product-media">
 
-                                        <a class="product-image" href="static/images/product-images/{{product['image']}}">
-                                            <img src="static/images/product-images/{{product['image']}}" alt="product">
+                                        <a class="product-image" href="static/images/product-images/{{product['img']}}">
+                                            <img src="static/images/product-images/{{product['img']}}" alt="product">
                                         </a>
                                         <div class="product-widget">
                                             <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view-{{product['id']}}"></a>
@@ -270,10 +338,10 @@
                                     </div>
                                     <div class="product-content">
                                         <h6 class="product-name">
-                                            <p>{{product['name']}}</p>
+                                            <a href="product-video.html">{{product['name']}}</a>
                                         </h6>
                                         <h6 class="product-price">
-                                            <span>${{product['price']}}</span>
+                                            <span>${{product['price']}}0</span>
                                         </h6>
                                         <button class="product-add" title="Add to Cart">
                                             <i class="fas fa-shopping-basket"></i>
@@ -284,7 +352,7 @@
                                             <input style="width: 50%" class="action-input" title="Quantity Number" type="number" id="quantity" name="quantity" value="1">
                                                <input type="hidden" id="p_id" name="p_id" value="{{product['id']}}">
                                                <input type="hidden" id="name" name="name" value="{{product['name']}}">
-                                                <input type="hidden" id="image" name="image" value="{{product['image']}}">
+                                                <input type="hidden" id="image" name="image" value="{{product['img']}}">
                                                 <input type="hidden" id="price" name="price" value="{{product['price']}}">
                                               <input style="width: 30%" type="submit" value="Add">
                                               </form>
@@ -305,7 +373,7 @@
                                         <label class="view-label new">{{product['stock']}} in stock</label>
                                     </div>
                                     <ul class="preview-slider">
-                                        <li><img src="static/images/product-images/{{product['image']}}" alt="product"></li>
+                                        <li><img src="static/images/product-images/{{product['img']}}" alt="product"></li>
                                     </ul>
 
                                 </div>
@@ -313,39 +381,38 @@
                             <div class="col-md-6 col-lg-6">
                                 <div class="view-details">
                                     <h3 class="view-name">
-                                        <p>{{product['name']}}</p>
+                                        <a href="product-video.html">{{product['name']}}</a>
                                     </h3>
                                     <div class="view-meta">
                                         <p>Brand:<span>{{product['brand']}}</span></p><br>
-                                        <p>Category: {{product['category']}}</p><br>
-                                        <p>Pounds: {{product['pound']}}</p>
+                                        <p>Wi-fi: {{product['wifi']}}</p><br>
+                                        <p>Video Res: {{product['video_res']}}</p>
                                     </div>
                                     <h3 class="view-price">
-                                        <span>${{product['price']}}</span>
+                                        <span>${{product['price']}}0</span>
                                     </h3>
-                                    <p class="view-desc">{{product['description']}}</p>
+                                    <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos reprehenderit fuga</p>
                                      <form action="{{url_for('addcart')}}" method="post">
                                          <input type="hidden" name="p_id" value="{{product['id']}}">
                                                <input type="hidden" name="name" value="{{product['name']}}">
-                                                <input type="hidden" name="image" value="{{product['image']}}">
+                                                <input type="hidden" name="image" value="{{product['img']}}">
                                                 <input type="hidden" name="price" value="{{product['price']}}">
                                          <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart" onclick="return false;">
+                                        <button class="product-add" title="Add to Cart">
                                             <span>Tap to add amount</span>
                                         </button>
 
                                         <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" readonly>
-                                            <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
+                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                         </div>
                                     </div>
                                     <div class="view-action-group">
-                                        <button class="view-add-cart" title="Add to Cart" onclick="addToCart(this)">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            <span>Add to cart</span>
-                                        </button>
-                                        
+                                        <a class="view-wish wish" href="/shop" title="Add to Cart">
+                                           <i class="fas fa-shopping-cart"></i>
+                                            <input type="submit" value="Add to cart">
+                                        </a>
                                     </div>
                                      </form>
                                 </div>
@@ -467,6 +534,14 @@
         </script>
 
         <script>
+            window.onload = function(){
+                document.getElementById('submit').onclick = function(){
+                    document.getElementById('quantity').value = document.getElementById('quantity1').value;
+            };
+            }
+        </script>
+
+        <script>
             function onlyOne(checkbox) {
             var checkboxes = document.getElementsByName('check')
             checkboxes.forEach((item) => {
@@ -474,39 +549,8 @@
             })
         }
         </script>
-
-<script>
-    function decreaseQuantity(button) {
-        const quantityInput = button.parentElement.querySelector(".action-input");
-        let quantity = parseInt(quantityInput.value);
-        if (quantity > 1) {
-            quantity--;
-        }
-        quantityInput.value = quantity+1;
-    }
-
-    function increaseQuantity(button) {
-        const quantityInput = button.parentElement.querySelector(".action-input");
-        let quantity = parseInt(quantityInput.value);
-        quantity++;
-        quantityInput.value = quantity-1;
-    }
-
-    const tapToAddButton = document.querySelector(".product-add");
-        const quantityInput = document.querySelector(".action-input");
-
-        tapToAddButton.addEventListener("click", function(event) {
-            event.preventDefault();
-            quantityInput.focus();
-        });
-
-</script>
-
-
-
         <!--=====================================
                     JS LINK PART END
         =======================================-->
     </body>
 </html>
-    
