@@ -53,6 +53,7 @@ The following functions have been purposefully left intact for the students to w
 * Change password (DB)---------Completo
 * Filters and sorting (DB or potential Python data structures) ------Completo
 * Edit cart and remove from cart (Sessions)-------- Completo
+* Cambio a la base de datos y el relational model (Database)--------Completo
 * Processing an order (DB)
 * Invoice (DB)
 * View orders (DB)
