@@ -160,7 +160,7 @@
                                             <td class="table-image"> <a href="static/images/product-images/{{item['image']}}">
                                                 <img src="static/images/product-images/{{item['image']}}" alt="product"></a> </td>
                                                 <td class="table-name"><h6>{{item['name']}}</h6></td>
-                                                <td class="table-price"><h6>${{item['price']}}0</h6></td>
+                                                <td class="table-price"><h6>${{item['price']}}</h6></td>
                                                 <td class="table-brand"><h6>{{item['quantity']}}</h6></td>
                                                  <td class="table-brand"><h6>${{item['total_price']}}0</h6></td>
                                                 <td class="table-action">
@@ -193,12 +193,8 @@
                                         <p>{{item['name']}}</p>
                                     </h3>
                                     <div class="view-meta">
-                                        <p>Brand:<span>{{item['brand']}}</span></p>
-                                    </div>
-                                    <div class="view-meta">
-                                        <p>Category: {{item['category']}}</p>
-                                    </div>
-                                    <div class="view-meta">
+                                        <p>Brand:<span>{{item['brand']}}</span></p><br>
+                                        <p>Category: {{item['category']}}</p><br>
                                         <p>Pounds: {{item['pound']}}</p>
                                     </div>
                                     <h3 class="view-price">

@@ -4,10 +4,12 @@ Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro traba
 
 
 Pepito: pass
-Javier: pass1234
+Javier: pass12345
 test: pass1
+javier(Joseph): pass1234
 felipe: pass1234
 pedro: pass1234
+ian: pass
 
 
 ---------------------INFORMACION DEL TEMPLATE------------------------------------------------------------------------------------------------
