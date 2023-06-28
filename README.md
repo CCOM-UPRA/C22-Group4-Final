@@ -1,4 +1,4 @@
-Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro trabajo lo destruimos con el revolu que le metimos a la misma vez. Entiendo que basicamente estamos empezando desde 0 pero ya lo hicimos una vez (Aunque mal) asi que lo podemos hacer denuevo y mas rapido.
+Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro trabajo lo destruimos con el revolu que le metimos a la misma vez.
 
 
 
