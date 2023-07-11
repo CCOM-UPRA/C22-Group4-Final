@@ -249,6 +249,7 @@ def addcart():
     image = request.form.get('image')
     price = request.form.get('price')
     brand = request.form.get('brand')
+    print("algooooo", brand)
     quantity = request.form.get('quantity')
     total = float(price) * int(quantity)
     # Find the add cart function in cartController
