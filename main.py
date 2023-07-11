@@ -84,7 +84,7 @@ def registerinfo():
     cardType = request.form.get('cardtype')
     expDate = request.form.get('expdate')
     cardNumber = request.form.get('cardnumber')
-    
+
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
@@ -93,7 +93,7 @@ def registerinfo():
     query = f"SELECT c_id FROM customer WHERE c_email='{email}'"
     cur.execute(query)
     result = cur.fetchone()
-    
+
     if result:
         # User already exists, so do not proceed with registration
         return redirect('/login?message=This email is already registered. Please try with a different email.')
@@ -110,17 +110,17 @@ def registerinfo():
         pass1 = sha256_crypt.encrypt(pass1)
         query = f"INSERT INTO customer(c_id, c_name, c_last_name, c_email, c_password, c_phone_number, c_address_line1, c_address_line2, c_city, c_state, c_zipcode) VALUES ({next_id},'{fname}','{lname}','{email}','{pass1}',{phonenumber},'{address}','{address2}','{city}','{state}',{zipCode})"
         cur.execute(query)
-        query2 = f"INSERT INTO Payment(c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({cardName},'{cardType}','{expDate}',{cardNumber})"
+
+        # Insert the payment information into the database
+        query2 = f"INSERT INTO payment(c_id, card_name, card_type, exp_date, card_num) VALUES ({next_id},'{cardName}','{cardType}','{expDate}','{cardNumber}')"
         cur.execute(query2)
+
         conn.commit()
 
-        # query2 = f"INSERT INTO Payment(c_card_name, c_card_type, c_exp_date, c_card_num) VALUES ({cardName},'{cardType}','{expDate}',{cardNumber})
+        # Redirect to the appropriate page
+        return redirect('/login?message=You have created a new account.')
 
-        # Log in the new user
-        if logincontroller2(email=email, password=pass1):
-            return redirect('/login?message=You have created a new account.')
-        else:
-            return redirect('/shop')
+
 
 
 

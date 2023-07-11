@@ -16,6 +16,8 @@ orderDict = {
     "payment_method": "Mastercard"
 }
 
+# Guardar en order
+
 productDict1 = {"1":{
     "image": 'ruko_f11_pro.jpg',
     "name": 'F11 Pro',
@@ -33,6 +35,8 @@ productDict2 = {"2":{
     "quantity": 2,
     "total_price": 178.00
 }}
+
+#Guardar en contains
 
 products = productDict1
 products = MagerDicts(products, productDict2)

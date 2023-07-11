@@ -118,49 +118,50 @@
             <div class="cart-header">
                 <div class="cart-total">
                     <i class="fas fa-shopping-basket"></i>
-                    <span>total item ({{session['amount']}})</span>
+                    <span>total item ({{ session['amount'] }})</span>
                 </div>
                 <button class="cart-close"><i class="icofont-close"></i></button>
             </div>
             <ul class="cart-list">
-
                 {% if session['cart'] %}
-                    {% for key, item in session['cart'].items() %}
+                {% for key, item in session['cart'].items() %}
                 <li class="cart-item">
                     <div class="cart-media">
-                        <a href="static/images/product-images/{{item['image']}}">
-                            <img src="static/images/product-images/{{item['image']}}" alt="product"></a>
-                        <form action="{{url_for('delete', id=key)}}">
-                        <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
+                        <a href="static/images/product-images/{{ item['image'] }}">
+                            <img src="static/images/product-images/{{ item['image'] }}" alt="product">
+                        </a>
+                        <form action="{{ url_for('delete', id=key) }}">
+                            <button class="cart-delete"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </div>
                     <div class="cart-info-group">
                         <div class="cart-info">
-                            <h6><a href="product-single.html">{{item['name']}}</a></h6>
-                            <p>Unit Price - ${{item['price']}}</p>
+                            <h6><a href="product-single.html">{{ item['name'] }}</a></h6>
+                            <p>Unit Price - ${{ item['price'] }}</p>
                         </div>
                         <div class="cart-action-group">
-                            <form action="{{url_for('editcart')}}" method="post">
-                                <input type="hidden" name="id" value="{{key}}">
+                            <form action="{{ url_for('editcart') }}" method="post">
+                                <input type="hidden" name="id" value="{{ key }}">
                                 <div class="product-action">
-                                    <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{item['quantity']}}">
-                                    <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                    <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item['quantity'] }}" readonly>
+                                    <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
                                 </div>
+
+                                <button class="save-button" type="submit">Edit</button>
                             </form>
-                            
-                            <h6>${{item['total_price']}}0</h6>
+                            <h6>${{ item['total_price'] }}0</h6>
                         </div>
                     </div>
                 </li>
-                    {% endfor %}
+                {% endfor %}
                 {% endif %}
             </ul>
             {% if 'cart' in session %}
             <div class="cart-footer">
-                <a class="cart-checkout-btn" href="{{url_for('checkout')}}">
+                <a class="cart-checkout-btn" href="{{ url_for('checkout') }}">
                     <span class="checkout-label">Proceed to Checkout</span>
-                    <span class="checkout-price">${{session['total']}}0</span>
+                    <span class="checkout-price">${{ session['total'] }}0</span>
                 </a>
             </div>
             {% endif %}
@@ -329,21 +330,22 @@
                                                 <input type="hidden" name="image" value="{{product['image']}}">
                                                 <input type="hidden" name="price" value="{{product['price']}}">
                                          <div class="view-add-group">
-                                        <button class="product-add" title="Add to Cart">
+                                        <button class="product-add" title="Add to Cart" onclick="return false;">
                                             <span>Tap to add amount</span>
                                         </button>
 
                                         <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
+                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" readonly>
+                                            <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
                                         </div>
                                     </div>
                                     <div class="view-action-group">
-                                        <a class="view-wish wish" href="/shop" title="Add to Cart">
-                                           <i class="fas fa-shopping-cart"></i>
-                                            <input type="submit" value="Add to cart">
-                                        </a>
+                                        <button class="view-add-cart" title="Add to Cart" onclick="addToCart(this)">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span>Add to cart</span>
+                                        </button>
+                                        
                                     </div>
                                      </form>
                                 </div>
@@ -465,14 +467,6 @@
         </script>
 
         <script>
-            window.onload = function(){
-                document.getElementById('submit').onclick = function(){
-                    document.getElementById('quantity').value = document.getElementById('quantity1').value;
-            };
-        }
-        </script>
-
-        <script>
             function onlyOne(checkbox) {
             var checkboxes = document.getElementsByName('check')
             checkboxes.forEach((item) => {
@@ -480,6 +474,36 @@
             })
         }
         </script>
+
+<script>
+    function decreaseQuantity(button) {
+        const quantityInput = button.parentElement.querySelector(".action-input");
+        let quantity = parseInt(quantityInput.value);
+        if (quantity > 1) {
+            quantity--;
+        }
+        quantityInput.value = quantity+1;
+    }
+
+    function increaseQuantity(button) {
+        const quantityInput = button.parentElement.querySelector(".action-input");
+        let quantity = parseInt(quantityInput.value);
+        quantity++;
+        quantityInput.value = quantity-1;
+    }
+
+    const tapToAddButton = document.querySelector(".product-add");
+        const quantityInput = document.querySelector(".action-input");
+
+        tapToAddButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            quantityInput.focus();
+        });
+
+</script>
+
+
+
         <!--=====================================
                     JS LINK PART END
         =======================================-->

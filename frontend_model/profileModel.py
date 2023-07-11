@@ -9,24 +9,30 @@ def getUserModel():
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
     # Find user via the customer ID saved in session
-    cur.execute("SELECT * from customer WHERE c_id = %s", session['customer'])
+    cur.execute("SELECT * FROM customer JOIN payment ON customer.c_id = payment.c_id WHERE customer.c_id = %s", session['customer'])
     userFound = cur.fetchall()
 
     # Save tuple information in a list
     for users in userFound:
-        user.append({"id": users[0], "name": users[1], "last_name": users[2], "email": users[3], "password": users[4],
-                    "phone_number": users[5], "address_line1": users[6], "address_line2": users[7], "city": users[8], "state": users[9], "zipcode": users[10]})
-
-    cur.execute("SELECT * from payment WHERE c_id = %s", session['customer'])
-    userFound = cur.fetchall()
-    for users in userFound:
-        user.append({"card_name": users[2], "card_type": users[3], "exp_date": users[5], "card_number": users[4], "status": users[7]})
+        user.append({
+            "id": users[0],
+            "name": users[1],
+            "last_name": users[2],
+            "email": users[3],
+            "password": users[4],
+            "phone_number": users[5],
+            "address_line1": users[6],
+            "address_line2": users[7],
+            "city": users[8],
+            "state": users[9],
+            "zipcode": users[10],
+            "card_name": users[13],
+            "card_type": users[14],
+            "card_number": users[15],
+            "exp_date": users[16],
+            "status": users[17]
+        })
     
-    
-    # To access user info:
-
-        # for u in user:
-        # u['id'], u['name'], u['email'], etc...
     return user
 
 

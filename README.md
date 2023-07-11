@@ -1,13 +1,15 @@
-Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro trabajo lo destruimos con el revolu que le metimos a la misma vez. Entiendo que basicamente estamos empezando desde 0 pero ya lo hicimos una vez (Aunque mal) asi que lo podemos hacer denuevo y mas rapido.
+Okay, obviamente como pueden ver ya hice el Github otravez, porque el otro trabajo lo destruimos con el revolu que le metimos a la misma vez.
 
 
 
 
 Pepito: pass
-Javier: pass1234
+Javier: pass12345
 test: pass1
+javier(Joseph): pass1234
 felipe: pass1234
 pedro: pass1234
+ian: pass
 
 
 ---------------------INFORMACION DEL TEMPLATE------------------------------------------------------------------------------------------------
@@ -53,6 +55,7 @@ The following functions have been purposefully left intact for the students to w
 * Change password (DB)---------Completo
 * Filters and sorting (DB or potential Python data structures) ------Completo
 * Edit cart and remove from cart (Sessions)-------- Completo
+* Cambio a la base de datos y el relational model (Database)--------Completo
 * Processing an order (DB)
 * Invoice (DB)
 * View orders (DB)
