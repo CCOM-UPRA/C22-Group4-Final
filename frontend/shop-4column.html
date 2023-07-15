@@ -213,7 +213,7 @@
 
 
                         <div class="shop-widget">
-                            <h6 class="shop-widget-title">Filter by Brand</h6>
+                            <h6 class="shop-widget-title">Filter by Brand</h6> 
                             <form method="GET" action="/filter">
                                 <ul class="shop-widget-list">
                                     {% for brand in brands %}
@@ -233,12 +233,30 @@
                             </form>
                         </div>
 
+
+                        <div class="shop-widget">
+                            <h6 class="shop-widget-title">Filter by Pounds</h6> 
+                            <form method="GET" action="/filter">
+                                <div class="shop-widget-group">
+                                    <input type="text" placeholder="Min - 0" name="min_pound">
+                                    <input type="text" placeholder="Max - 10" name="max_pound">
+                                </div>
+                                <input type="hidden" name="filter_type" value="pound">
+                                <button type="submit" class="shop-widget-btn">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search</span>
+                                </button>
+                            </form>
+                        </div>
+
+
                         <form method="GET" action="/filter">
                             <div class="shop-widget">
                             <input type="hidden" name="filter_type" value="all">
                             <button class="shop-widget-btn">
                                     <i class="fas fa-search"></i>
-                                    <span>Search by All Filters</span>
+                                    <span>Remove All Filters</span>
+                                    <!-- Le cambie el nombre de Search by all filters a Remove all filters -->
                                 </button>
                             </form>
                         </div>

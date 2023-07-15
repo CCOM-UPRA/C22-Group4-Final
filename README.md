@@ -51,11 +51,21 @@ The following functions are working in the template:
 
 The following functions have been purposefully left intact for the students to work on:
 
-* Register (Database connection)------Completo
-* Change password (DB)---------Completo
-* Filters and sorting (DB or potential Python data structures) ------Completo
-* Edit cart and remove from cart (Sessions)-------- Completo
-* Cambio a la base de datos y el relational model (Database)--------Completo
+* Register (Database connection)                                                                                                                                                        ------Completo
+* Change password (DB)                                                                                                                                                                  ------Completo?
+* Filters and sorting (DB or potential Python data structures)                                                                                                                          ------Completo
+* Edit cart and remove from cart (Sessions)                                                                                                                                             ------Completo
+* Cambio a la base de datos y el relational model (Database)                                                                                                                            ------Completo
+* Cuando anado mas de un mismo producto que no lo substituya.                                                                                                                           ------Completo
+* Anadir mas de un producto                                                                                                                                                             ------Completo
+* Poder buscar por precio con uno de los espacios vacios.                                                                                                                               ------Completo
+* Anadir mas filtros ---------(Ahora esta el "Search by pounds" Que muestra todos los productos de un cierto peso)                                                                      ------Completo
+* Search by all filters no funciona ------- (Lo probe despues de ver la sugerencia de la profe y funciona lo mas bien. Si no me aparecen todos los productos                            ------Completo
+* porque estoy utilizando un filtro, el botton de "Search by all filters" los muestra todos)
+* Lograr utilizar un filter by brand y un search by price or pound a la misma vez
+* Arreglar el Edit item en el checkout
+* Arreglar el Delete item en el checkout
+
 * Processing an order (DB)
 * Invoice (DB)
 * View orders (DB)

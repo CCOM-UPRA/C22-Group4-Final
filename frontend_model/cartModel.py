@@ -27,15 +27,20 @@ def getCartModel():
 def addCartModel(dictitems):
     # Add new product to cart using MagerDicts if cart already has items in
     if 'cart' in session:
-        session['cart'] = MagerDicts(session['cart'], dictitems)
+        for key, item in dictitems.items():
+            if key in session['cart']:
+                # Update the quantity if the product already exists in the cart
+                session['cart'][key]['quantity'] += item['quantity']
+                session['cart'][key]['total_price'] += item['total_price']
+            else:
+                session['cart'][key] = item
     else:
         session['cart'] = dictitems
 
     # Update the session variables with the new additions
-    # Pointer: POST variables can sometimes end up returning strings, so we must type_cast our variables for the operations
     for key, item in dictitems.items():
-        session['amount'] += int(item['quantity'])
-        session['total'] += float(item['total_price'])
+        session['amount'] += item['quantity']
+        session['total'] += item['total_price']
     return
 
 

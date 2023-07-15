@@ -322,13 +322,50 @@ def filter():
         selected_brands = request.args.getlist("brand")
         filtered_products = [p for p in getProducts() if p["brand"] in selected_brands]
     elif filter_type == "price":
-        # Si el producto tiene un precio entre esos dos valores que el usuario selecciono, guardalo en filtered_products
-        min_price = float(request.args.get("min_price", 0))
-        max_price = float(request.args.get("max_price", float("inf")))
-        filtered_products = [p for p in getProducts() if min_price <= float(p["price"]) <= max_price]
+        min_price = request.args.get("min_price")
+        max_price = request.args.get("max_price")
+
+        # Convert min_price to float if it's not an empty string, otherwise set it to None
+        try:
+            min_price = float(min_price)
+        except (ValueError, TypeError):
+            min_price = None
+
+        # Convert max_price to float if it's not an empty string, otherwise set it to None
+        try:
+            max_price = float(max_price)
+        except (ValueError, TypeError):
+            max_price = None
+
+        filtered_products = []
+        for p in getProducts():
+            price = float(p["price"])
+
+            # Check if the product's price falls within the specified range
+            if (min_price is None or price >= min_price) and (max_price is None or price <= max_price):
+                filtered_products.append(p)
+    elif filter_type == "pound":
+        min_pounds = request.args.get("min_pound")
+        max_pounds = request.args.get("max_pound")
+
+        try:
+            min_pounds = float(min_pounds)
+        except (ValueError, TypeError):
+            min_pounds = None
+
+        try:
+            max_pounds = float(max_pounds)
+        except (ValueError, TypeError):
+            max_pounds = None
+
+        filtered_products = []
+        for p in getProducts():
+            pounds = float(p.get("pound", 0))
+            if (min_pounds is None or pounds >= min_pounds) and (max_pounds is None or pounds <= max_pounds):
+                filtered_products.append(p)
     else:
-        # Si el usuario presiono filter by all muestra todos los productos
         filtered_products = getProducts()
+
     return render_template("shop-4column.html", products=filtered_products, brands=getBrands())
 
 
