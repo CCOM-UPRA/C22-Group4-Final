@@ -63,6 +63,8 @@ The following functions have been purposefully left intact for the students to w
 * Search by all filters no funciona ------- (Lo probe despues de ver la sugerencia de la profe y funciona lo mas bien. Si no me aparecen todos los productos                            ------Completo
 * porque estoy utilizando un filtro, el botton de "Remove all filters" los muestra todos) Search by all filters ahora se llama Remove all filters
 
+
+
 * Lograr utilizar un filter by brand y un search by price or pound a la misma vez
 * Arreglar el Edit item en el checkout
 * Arreglar el Delete item en el checkout

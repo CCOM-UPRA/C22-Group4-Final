@@ -249,11 +249,12 @@ def addcart():
     image = request.form.get('image')
     price = request.form.get('price')
     brand = request.form.get('brand')
-    print("algooooo", brand)
+    category = request.form.get('category')
+    pounds = request.form.get('pound')
     quantity = request.form.get('quantity')
     total = float(price) * int(quantity)
     # Find the add cart function in cartController
-    addCartController(p_id, name, image, price, quantity, total, brand)
+    addCartController(p_id, name, image, price, quantity, total, brand, category, pounds)
     # request.referrer means you will be redirected to the current page you were in
     return redirect(request.referrer)
 

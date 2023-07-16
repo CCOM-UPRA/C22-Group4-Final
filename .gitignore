@@ -9,3 +9,4 @@ frontend_model/__pycache__/profileModel.cpython-311.pyc
 frontend_model/__pycache__/cartModel.cpython-311.pyc
 frontend_model/__pycache__/loginModel.cpython-311.pyc
 *.pyc
+*.pyc
