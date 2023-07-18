@@ -52,7 +52,7 @@ The following functions are working in the template:
 The following functions have been purposefully left intact for the students to work on:
 
 * Register (Database connection)                                                                                                                                                        ------Completo
-* Change password (DB)                                                                                                                                                                  ------Completo?
+* Change password (DB)                                                                                                                                                                  ------?
 * Filters and sorting (DB or potential Python data structures)                                                                                                                          ------Completo
 * Edit cart and remove from cart (Sessions)                                                                                                                                             ------Completo
 * Cambio a la base de datos y el relational model (Database)                                                                                                                            ------Completo
@@ -61,16 +61,37 @@ The following functions have been purposefully left intact for the students to w
 * Poder buscar por precio con uno de los espacios vacios.                                                                                                                               ------Completo
 * Anadir mas filtros ---------(Ahora esta el "Search by pounds" Que muestra todos los productos de un cierto peso)                                                                      ------Completo
 * Search by all filters no funciona (Search by all filters ahora se llama Remove all filters)                                                                                           ------Completo
+* Quitar el Sort By en My Orders                                                                                                                                                        ------Completo
 * Lograr utilizar un filter by brand y un search by price or pound a la misma vez                                                                                                       ------
 
+
 Cambios del checkout
-* Arreglar el Edit item en el checkout                                                                                                                                                  ------
+* Arreglar el Edit item en el checkout    (IAN)                                                                                                                                         ------
 * Arreglar el Delete item en el checkout                                                                                                                                                ------Completo
 
+Processing an order (DB)
+* Hacer la coneccion con orders en la base de datos                                                                                                                                     ------Completo
+* La informacion que va en orders aparece correctamente en la DB                                                                                                                        ------Completo
+* Anadir arrival date a la DB de orders                                                                                                                                                 ------
+* Hacer la coneccion con contains en la base de datos                                                                                                                                   ------
+* La informacion que va en contains aparece correctamente en la DB                                                                                                                      ------
 
-* Processing an order (DB)
 
 
-* Invoice (DB)
-* View orders (DB)
-* Quitar el Sort By                                                                                                                                                                     ------Completo
+Invoice (DB)
+* Crear la conneccion con la base de datos                                                                                                                                              ------
+* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------
+* Mostrar los detalles de los productos correctamente                                                                                                                                   ------
+
+View orders (DB)
+* Mostrar la informacion correcta                                                                                                                                                       ------
+* Hacer que la barra se siga llenando mientras pasan los dias                                                                                                                           ------
+
+Reunion Final
+* Hacer una reunion con la profesora para asegurarnos de que todo funcione. Lo mas tarde seria el 25 de julio.                                                                          ------
+
+
+
+
+
+
