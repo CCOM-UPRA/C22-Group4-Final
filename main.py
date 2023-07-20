@@ -326,13 +326,13 @@ def filter():
         min_price = request.args.get("min_price")
         max_price = request.args.get("max_price")
 
-        # Convert min_price to float if it's not an empty string, otherwise set it to None
+        # Cambiar min price a float si no esta vacio, si esta vacio recibe NONE
         try:
             min_price = float(min_price)
         except (ValueError, TypeError):
             min_price = None
 
-        # Convert max_price to float if it's not an empty string, otherwise set it to None
+        # Cambiar max price a float si no esta vacio, si esta vacio recibe NONE
         try:
             max_price = float(max_price)
         except (ValueError, TypeError):
@@ -342,7 +342,7 @@ def filter():
         for p in getProducts():
             price = float(p["price"])
 
-            # Check if the product's price falls within the specified range
+            # Verifica si el precio de el producto esta entre los valores ingresados
             if (min_price is None or price >= min_price) and (max_price is None or price <= max_price):
                 filtered_products.append(p)
     elif filter_type == "pound":

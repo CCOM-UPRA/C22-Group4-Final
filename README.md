@@ -7,7 +7,7 @@ Pepito: pass
 Javier: pass12345
 test: pass1
 javier(Joseph): pass1234
-felipe: pass1234
+felipe: pass
 pedro: pass1234
 ian: pass
 
@@ -72,9 +72,9 @@ Cambios del checkout
 Processing an order (DB)
 * Hacer la coneccion con orders en la base de datos                                                                                                                                     ------Completo
 * La informacion que va en orders aparece correctamente en la DB                                                                                                                        ------Completo
-* Anadir arrival date a la DB de orders                                                                                                                                                 ------
-* Hacer la coneccion con contains en la base de datos                                                                                                                                   ------
-* La informacion que va en contains aparece correctamente en la DB                                                                                                                      ------
+* Anadir arrival date a la DB de orders                                                                                                                                                 ------Completo
+* Hacer la coneccion con contains en la base de datos                                                                                                                                   ------Completo
+* La informacion que va en contains aparece correctamente en la DB                                                                                                                      ------Completo
 
 
 
@@ -86,6 +86,11 @@ Invoice (DB)
 View orders (DB)
 * Mostrar la informacion correcta                                                                                                                                                       ------
 * Hacer que la barra se siga llenando mientras pasan los dias                                                                                                                           ------
+
+* Despues de un dia cambiar el status a enviado             ------
+
+* Cuando la barra se llene cambiar el status de la orden a recibido    ------
+
 
 Reunion Final
 * Hacer una reunion con la profesora para asegurarnos de que todo funcione. Lo mas tarde seria el 25 de julio.                                                                          ------
