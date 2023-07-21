@@ -302,13 +302,17 @@ def validate():
 
 @app.route("/invoice")
 def invoice():
-    # TO BE CONNECTED TO MYSQL BY STUDENTS
-    # > invoiceController
-    order = getOrder()
-    products = getOrderProducts()
-    # Total amount of items in this simulated order:
-    amount = 3
+    # Calling the cart's dictionary
+    cart = session.get('cart', {})
+    
+    # Calculate the quantity of items in the cart
+    amount = sum(item.get('quantity', 0) for item in cart.values())
+
+    order = getOrder() 
+    products = getOrderProducts(cart) 
+
     return render_template("invoice.html", order=order, products=products, amount=amount)
+
 
 
 from flask import request

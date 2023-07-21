@@ -4,5 +4,5 @@ def getOrder():
     return getOrderModel()
 
 
-def getOrderProducts():
-    return getProductsModel()
+def getOrderProducts(cart):
+    return getProductsModel(cart)

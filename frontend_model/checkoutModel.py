@@ -7,7 +7,7 @@ from flask import session
 
 def validateUserModel():
     user = []
-    # Find user in DB according to customer ID saved in session
+    # Find user in DB from session
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',
                            user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
@@ -69,7 +69,7 @@ def sendToDatabaseModel(user, cart):
 
         # Insert the order into the 'orders' table
         query = f"INSERT INTO orders(c_id, payment_id, tracking_num, order_date, arrival_date, total_price, o_status) " \
-                f"VALUES ('{c_id}','{payment_id}','{tracking_num}','{order_date}','{arrival_date}',{total_price},'Standby')"
+                f"VALUES ('{c_id}','{payment_id}','{tracking_num}','{order_date}','{arrival_date}',{total_price},'Received')"
         cur.execute(query)
 
         # Get the newly inserted order ID

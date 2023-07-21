@@ -79,18 +79,16 @@ Processing an order (DB)
 
 
 Invoice (DB)
-* Crear la conneccion con la base de datos                                                                                                                                              ------
-* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------
-* Mostrar los detalles de los productos correctamente                                                                                                                                   ------
+* Crear la conneccion con la base de datos                                                                                                                                              ------Complete
+* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------Complete
+* Mostrar los detalles de los productos correctamente                                                                                                                                   ------Complete
 
 View orders (DB)
 * Mostrar la informacion correcta                                                                                                                                                       ------
 * Hacer que la barra se siga llenando mientras pasan los dias                                                                                                                           ------
-
-* Despues de un dia cambiar el status a enviado             ------
-
-* Cuando la barra se llene cambiar el status de la orden a recibido    ------
-
+* Despues de un dia cambiar el status a procesado                                                                                                                                       ------
+* Despues de un dia cambiar el status a shipped                                                                                                                                         ------
+* Cuando sea el dia de order arrival llenar la barra y cambiar el status de la orden a Delivered                                                                                        ------
 
 Reunion Final
 * Hacer una reunion con la profesora para asegurarnos de que todo funcione. Lo mas tarde seria el 25 de julio.                                                                          ------
