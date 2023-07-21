@@ -22,7 +22,6 @@ def validateUserCheckout():
             return redirect(url_for('checkout', message=message))
         else:
             # Esto ocurre cuando presiono el boton de procede to checkout
-            
             # Envio la informacion del usuario y el carrito de compras para subirlo a la base de datos
             cart = session.get('cart', {})  # Get the cart dictionary
             sendToDatabase(u, cart)

@@ -76,7 +76,7 @@ def sendToDatabaseModel(user, cart):
         cur.execute("SELECT LAST_INSERT_ID()")
         order_id = cur.fetchone()[0]
 
-        # Insert product information into the 'contains' table for each product in the cart
+        # Insert product information into contains
         for product_id, product_data in cart.items():
             price = product_data['price']
             amount = product_data['quantity']
@@ -85,10 +85,17 @@ def sendToDatabaseModel(user, cart):
                     f"VALUES ({order_id}, {product_id}, {amount},  {price})"
             cur.execute(query)
 
-            # Update the available_quantity in the products table
+            # Update the quantity
             update_query = f"UPDATE products SET p_stock = p_stock - {amount} WHERE p_id = {product_id}"
             cur.execute(update_query)
 
+            # Check if the product stock is empty and update the status to "Unavailable"
+            check_query = f"SELECT p_stock FROM products WHERE p_id = {product_id}"
+            cur.execute(check_query)
+            remaining_stock = cur.fetchone()[0]
+            if remaining_stock <= 0:
+                update_status_query = f"UPDATE products SET p_status = 'Unavailable' WHERE p_id = {product_id}"
+                cur.execute(update_status_query)
 
         conn.commit()
         print("Order and product information successfully added to the database!")

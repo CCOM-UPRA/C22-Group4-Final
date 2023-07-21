@@ -144,8 +144,18 @@
                                 <input type="hidden" name="id" value="{{ key }}">
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item['quantity'] }}" readonly>
+                                    <input class="action-input" title="Quantity Number" type="number" name="quantity" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
                                     <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
+<!-- Lo puse a ver algo -->                                    
+                                    <input type="hidden" id="p_id" name="p_id" value="{{item['id']}}">
+                                               <input type="hidden" id="name" name="name" value="{{item['name']}}">
+                                                <input type="hidden" id="image" name="image" value="{{item['image']}}">
+                                                <input type="hidden" id="price" name="price" value="{{item['price']}}">
+                                                <input type="hidden" id="brand" name="brand" value="{{item['brand']}}">
+                                                <input type="hidden" id="category" name="category" value="{{item['category']}}">
+                                                <input type="hidden" id="stock" name="stock" value="{{item['stock']}}">
+                                                <input type="hidden" id="pound" name="pound" value="{{item['pound']}}">
+<!-- Lo puse a ver algo -->
                                 </div>
 
                                 <button class="save-button" type="submit">Edit</button>
@@ -299,13 +309,14 @@
                                         </button>
                                         <div class="product-action">
                                             <form action="{{url_for('addcart')}}" method="post">
-                                            <input style="width: 50%" class="action-input" title="Quantity Number" type="number" id="quantity" name="quantity" value="1">
+                                            <input style="width: 50%" class="action-input" title="Quantity Number" type="number" id="quantity" name="quantity" value="1" max="{{ product['stock'] }}">
                                                <input type="hidden" id="p_id" name="p_id" value="{{product['id']}}">
                                                <input type="hidden" id="name" name="name" value="{{product['name']}}">
                                                 <input type="hidden" id="image" name="image" value="{{product['image']}}">
                                                 <input type="hidden" id="price" name="price" value="{{product['price']}}">
                                                 <input type="hidden" id="brand" name="brand" value="{{product['brand']}}">
                                                 <input type="hidden" id="category" name="category" value="{{product['category']}}">
+                                                <input type="hidden" id="stock" name="stock" value="{{product['stock']}}">
                                                 <input type="hidden" id="pound" name="pound" value="{{product['pound']}}">
                                               <input style="width: 30%" type="submit" value="Add">
                                               </form>
@@ -357,8 +368,19 @@
 
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" readonly>
+                                            <input class="action-input" title="Quantity Number" type="number" name="quantity" value="1" readonly data-stock="{{ product['stock'] }}">
                                             <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
+
+<!-- Lo puse a ver algo -->
+                                            <input type="hidden" id="p_id" name="p_id" value="{{product['id']}}">
+                                               <input type="hidden" id="name" name="name" value="{{product['name']}}">
+                                                <input type="hidden" id="image" name="image" value="{{product['image']}}">
+                                                <input type="hidden" id="price" name="price" value="{{product['price']}}">
+                                                <input type="hidden" id="brand" name="brand" value="{{product['brand']}}">
+                                                <input type="hidden" id="category" name="category" value="{{product['category']}}">
+                                                <input type="hidden" id="stock" name="stock" value="{{product['stock']}}">
+                                                <input type="hidden" id="pound" name="pound" value="{{product['pound']}}">
+<!-- Lo puse a ver algo -->                                                
                                         </div>
                                     </div>
                                     <div class="view-action-group">
@@ -509,7 +531,10 @@
     function increaseQuantity(button) {
         const quantityInput = button.parentElement.querySelector(".action-input");
         let quantity = parseInt(quantityInput.value);
-        quantity++;
+        const stock = parseInt(quantityInput.getAttribute("data-stock"));
+        if (quantity < stock) {
+            quantity++;
+        }
         quantityInput.value = quantity-1;
     }
 

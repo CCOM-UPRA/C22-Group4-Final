@@ -52,7 +52,8 @@ The following functions are working in the template:
 The following functions have been purposefully left intact for the students to work on:
 
 * Register (Database connection)                                                                                                                                                        ------Completo
-* Change password (DB)                                                                                                                                                                  ------?
+* Change password (DB) (Me acuerdo haber visto una funcion de change password que tenia la informacion de javier, 
+* pero no la encuentro, debe estar en un lugar obvio pero no la veo en ningun lado y la que estoy utilizando funciona.)                                                                                                                                                            ------Completo
 * Filters and sorting (DB or potential Python data structures)                                                                                                                          ------Completo
 * Edit cart and remove from cart (Sessions)                                                                                                                                             ------Completo
 * Cambio a la base de datos y el relational model (Database)                                                                                                                            ------Completo
@@ -63,6 +64,8 @@ The following functions have been purposefully left intact for the students to w
 * Search by all filters no funciona (Search by all filters ahora se llama Remove all filters)                                                                                           ------Completo
 * Quitar el Sort By en My Orders                                                                                                                                                        ------Completo
 * Lograr utilizar un filter by brand y un search by price or pound a la misma vez                                                                                                       ------
+* Cuando compro un producto en la base de datos baja la cantidad disponible ------Completo
+* Cuando se acaba el producto quitarlo de la tienda --------
 
 
 Cambios del checkout
@@ -87,10 +90,9 @@ Invoice (DB)
 
 View orders (DB)
 * Mostrar la informacion correcta                                                                                                                                                       ------Completed
-* Hacer que la barra se siga llenando mientras pasan los dias                                                                                                                           ------Completed???????
-* Despues de un dia cambiar el status a procesado                                                                                                                                       ------Completed?????
-* Despues de un dia cambiar el status a shipped                                                                                                                                         ------Completed????
-* Cuando sea el dia de order arrival llenar la barra y cambiar el status de la orden a Delivered                                                                                        ------Completed??????
+* Hacer que la barra se siga llenando mientras pasan los dias (Funciona pero no marca los anteriores solo en el que esta)                                                                                                                          ------Completed???????
+
+
 
 Reunion Final
 * Hacer una reunion con la profesora para asegurarnos de que todo funcione. Lo mas tarde seria el 25 de julio.                                                                          ------
