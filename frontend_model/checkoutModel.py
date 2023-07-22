@@ -50,7 +50,7 @@ def calculate_cart_total(cart):
         total += product_data['total_price']
     return total
 
-    # Esta funcion sube toda la informacion a la base de datos
+
 def sendToDatabaseModel(user, cart):
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
@@ -72,11 +72,10 @@ def sendToDatabaseModel(user, cart):
                 f"VALUES ('{c_id}','{payment_id}','{tracking_num}','{order_date}','{arrival_date}',{total_price},'Received')"
         cur.execute(query)
 
-        # Get the newly inserted order ID
-        cur.execute("SELECT LAST_INSERT_ID()")
-        order_id = cur.fetchone()[0]
+        # get order_id
+        order_id = cur.lastrowid
 
-        # Insert product information into contains
+        # Insert product data into contains DB
         for product_id, product_data in cart.items():
             price = product_data['price']
             amount = product_data['quantity']
@@ -89,7 +88,7 @@ def sendToDatabaseModel(user, cart):
             update_query = f"UPDATE products SET p_stock = p_stock - {amount} WHERE p_id = {product_id}"
             cur.execute(update_query)
 
-            # Check if the product stock is empty and update the status to "Unavailable"
+            # Check stock, if empty update the status to "Unavailable"
             check_query = f"SELECT p_stock FROM products WHERE p_id = {product_id}"
             cur.execute(check_query)
             remaining_stock = cur.fetchone()[0]
@@ -100,9 +99,13 @@ def sendToDatabaseModel(user, cart):
         conn.commit()
         print("Order and product information successfully added to the database!")
 
+        return order_id
+
     except Exception as e:
         print(f"Error occurred: {e}")
         conn.rollback()
 
     finally:
         conn.close()
+
+ 

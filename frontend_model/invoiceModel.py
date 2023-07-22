@@ -14,7 +14,7 @@ def getOrderModel(order_id):
         JOIN payment p ON o.payment_id = p.payment_id
         WHERE o.o_id = %s
     """
-
+    print("Orderid:", order_id)
     cur.execute(query, (order_id,))
     result = cur.fetchone()
 

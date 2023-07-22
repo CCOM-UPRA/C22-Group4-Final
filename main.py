@@ -312,8 +312,9 @@ def invoice():
     # Calculate the quantity of items in the cart
     amount = sum(int(item.get('quantity', 0)) for item in cart.values())
 
-    order = getOrder() 
-    products = getOrderProducts(cart) 
+    order_id = request.args.get('order_id')  # Retrieve the order_id from the URL parameters
+    order = getOrder(order_id)
+    products = getOrderProducts(cart)
 
     return render_template("invoice.html", order=order, products=products, amount=amount)
 

@@ -24,9 +24,9 @@ def validateUserCheckout():
             # Esto ocurre cuando presiono el boton de procede to checkout
             # Envio la informacion del usuario y el carrito de compras para subirlo a la base de datos
             cart = session.get('cart', {})  # Get the cart dictionary
-            sendToDatabase(u, cart)
-            
-            return redirect("/invoice")
+            order_id = sendToDatabase(u, cart)
+
+            return redirect(url_for('invoice', order_id=order_id))
 
 def sendToDatabase(user,cart):
     return sendToDatabaseModel(user,cart)
