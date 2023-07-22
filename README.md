@@ -65,7 +65,8 @@ The following functions have been purposefully left intact for the students to w
 * Quitar el Sort By en My Orders                                                                                                                                                        ------Completo
 * Lograr utilizar un filter by brand y un search by price or pound a la misma vez                                                                                                       ------
 * Cuando compro un producto en la base de datos baja la cantidad disponible ------Completo
-* Cuando se acaba el producto quitarlo de la tienda --------
+* Cuando se acaba el producto quitarlo de la tienda --------Completo
+* Solo poder anadir al carrito la cantidad disponible del producto. -------Completo
 
 
 Cambios del checkout

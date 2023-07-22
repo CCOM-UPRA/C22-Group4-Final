@@ -70,7 +70,7 @@
                     </div>
 
                     <a href="index.html" class="header-logo">
-                        <img src="static/images/logo.png" alt="logo">
+                        <img src="static\images\logo.png" alt="logo">
                     </a>
 
                     {% if 'customer' in session %}
@@ -144,7 +144,7 @@
                                 <input type="hidden" name="id" value="{{ key }}">
                                 <div class="product-action">
                                     <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                    <input class="action-input" title="Quantity Number" type="number" name="quantity" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
+                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
                                     <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
 <!-- Lo puse a ver algo -->                                    
                                     <input type="hidden" id="p_id" name="p_id" value="{{item['id']}}">
@@ -368,7 +368,7 @@
 
                                         <div class="product-action">
                                             <button class="action-minus" title="Quantity Minus" type="button" onclick="decreaseQuantity(this)"><i class="icofont-minus"></i></button>
-                                            <input class="action-input" title="Quantity Number" type="number" name="quantity" value="1" readonly data-stock="{{ product['stock'] }}">
+                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1" readonly data-stock="{{ product['stock'] }}">
                                             <button class="action-plus" title="Quantity Plus" type="button" onclick="increaseQuantity(this)"><i class="icofont-plus"></i></button>
 
 <!-- Lo puse a ver algo -->
