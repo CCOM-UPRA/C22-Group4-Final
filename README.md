@@ -53,7 +53,7 @@ The following functions have been purposefully left intact for the students to w
 
 * Register (Database connection)                                                                                                                                                        ------Completo
 * Change password (DB) (Me acuerdo haber visto una funcion de change password que tenia la informacion de javier, 
-* pero no la encuentro, debe estar en un lugar obvio pero no la veo en ningun lado y la que estoy utilizando funciona.)                                                                                                                                                            ------Completo
+* pero no la encuentro, debe estar en un lugar obvio pero no la veo en ningun lado y la que estoy utilizando funciona.)                                                                                                                                                                              ------Completo
 * Filters and sorting (DB or potential Python data structures)                                                                                                                          ------Completo
 * Edit cart and remove from cart (Sessions)                                                                                                                                             ------Completo
 * Cambio a la base de datos y el relational model (Database)                                                                                                                            ------Completo
@@ -83,15 +83,15 @@ Processing an order (DB)
 
 
 Invoice (DB)
-* Crear la conneccion con la base de datos                                                                                                                                              ------Complete
-* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------Complete
-* Mostrar los detalles de los productos correctamente                                                                                                                                   ------Complete
+* Crear la conneccion con la base de datos                                                                                                                                              ------Completo
+* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------Completo
+* Mostrar los detalles de los productos correctamente                                                                                                                                   ------Completo
 
 
 
 View orders (DB)
-* Mostrar la informacion correcta                                                                                                                                                       ------Completed
-* Hacer que la barra se siga llenando mientras pasan los dias (Funciona pero no marca los anteriores solo en el que esta)                                                                                                                          ------Completed???????
+* Mostrar la informacion correcta                                                                                                                                                       ------Completo
+* Hacer que la barra se siga llenando mientras pasan los dias (Funciona pero no marca los anteriores solo en el que esta)                                                                                                                                                                                   ------Completo???????
 
 
 
