@@ -84,7 +84,7 @@ Processing an order (DB)
 
 Invoice (DB)
 * Crear la conneccion con la base de datos                                                                                                                                              ------Complete
-* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+* Mostrar los detalles de las ordenes correctamente                                                                                                                                     ------Complete
 * Mostrar los detalles de los productos correctamente                                                                                                                                   ------Complete
 
 
