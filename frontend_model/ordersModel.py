@@ -87,3 +87,34 @@ def updateOrdersModel():
             conn.commit()
 
     conn.close()
+
+def deleteOrder(order_id):
+    conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
+    cur = conn.cursor()
+
+    try:
+        # Get the amount of each product 
+        query_contains = f"SELECT p_id, amount FROM contains WHERE o_id = {order_id}"
+        cur.execute(query_contains)
+        contains_data = cur.fetchall()
+
+        # Update the product stock
+        for p_id, amount in contains_data:
+            update_query = f"UPDATE products SET p_stock = p_stock + {amount} WHERE p_id = {p_id}"
+            cur.execute(update_query)
+
+        # Delete order information from contains
+        delete_contains_query = f"DELETE FROM contains WHERE o_id = {order_id}"
+        cur.execute(delete_contains_query)
+
+        # Delete the order from orders
+        delete_order_query = f"DELETE FROM orders WHERE o_id = {order_id}"
+        cur.execute(delete_order_query)
+
+        conn.commit()
+        print("Order deleted and product stock updated")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        conn.rollback()
+    finally:
+        conn.close()

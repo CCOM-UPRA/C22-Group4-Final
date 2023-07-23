@@ -6,5 +6,8 @@ def getOrdersAndProductsController():
 def updateOrdersController():
     return updateOrdersModel()
 
+def deleteOrderController(order_id):
+    return deleteOrder(order_id)
+
 
 
