@@ -1,18 +1,10 @@
 from frontend_model.ordersModel import *
 
+def getOrdersAndProductsController():
+    return getOrdersAndProductsModel()
 
-def getorder1():
-    return getorder1M()
-
-
-def getorder2():
-    return getorder2M()
+def updateOrdersController():
+    return updateOrdersModel()
 
 
-def getorder1products():
-    return getorder1prodM()
-
-
-def getorder2products():
-    return getorder2prodM()
 

@@ -230,15 +230,17 @@ def editpassword():
 
 @app.route("/orders")
 def orders():
-    # TO BE CONNECTED TO MYSQL BY STUDENTS
-    # Redirects us to the orders list page of the user
-    # Fetches each order and its products from ordersController
-    order1 = getorder1()
-    products1 = getorder1products()
-    order2 = getorder2()
-    products2 = getorder2products()
+    # Fetch all orders with their respective products from the database
+    completeOrders = getOrdersAndProductsController()
 
-    return render_template("orderlist.html", order1=order1, products1=products1, order2=order2, products2=products2)
+
+    # This should update the status of the orders
+    updateOrdersController()
+
+
+    return render_template("orderlist.html", orders_with_products=completeOrders)
+
+
 
 
 @app.route("/addcart", methods=["POST"])
@@ -306,7 +308,7 @@ def invoice():
     cart = session.get('cart', {})
     
     # Calculate the quantity of items in the cart
-    amount = sum(item.get('quantity', 0) for item in cart.values())
+    amount = sum(int(item.get('quantity', 0)) for item in cart.values())
 
     order = getOrder() 
     products = getOrderProducts(cart) 
