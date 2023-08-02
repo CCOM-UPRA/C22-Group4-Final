@@ -69,7 +69,7 @@ The following functions have been purposefully left intact for the students to w
 
 
 Cambios del checkout
-* Arreglar el Edit item en el checkout    (IAN)                                                                                                                                         ------
+* Arreglar el Edit item en el checkout                                                                                                                                                  ------Completo
 * Arreglar el Delete item en el checkout                                                                                                                                                ------Completo
 
 Processing an order (DB)
@@ -90,7 +90,7 @@ Invoice (DB)
 
 View orders (DB)
 * Mostrar la informacion correcta                                                                                                                                                       ------Completo
-* Hacer que la barra se siga llenando mientras pasan los dias (Funciona pero no marca los anteriores solo en el que esta)                                                                                                                                                                                   ------Completo???????
+* Hacer que la barra se siga llenando mientras pasan los dias (Funciona pero no marca los anteriores solo en el que esta)                                                                                                                                                                                ------Completo???????
 
 
 
