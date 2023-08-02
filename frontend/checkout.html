@@ -205,13 +205,24 @@
                                         <span>${{item['price']}}</span>
                                     </h3>
                                     <p class="view-desc">{{item['desc']}}</p>
-                                    <form action="{{url_for('checkout')}}" method="post">
+                                    <form action="{{url_for('editcart')}}" method="post">
+                                        <input type="hidden" name="id" value="{{ key }}">
                                     <div class="view-add-group">
-                                            <input style="width: 75%; text-align:center" class="action-input" title="Quantity Number" type="number" name="quantity" value="{{item['quantity']}}">
-                                            <input type="hidden" id="p_id" name="p_id" value="{{key}}">
-                                            <input type="hidden" id="page" name="page" value="/checkout"><br>
-                                         <input type="submit" name="submit" id="submit" value="Edit amount">
+                                        
+                                        <input class="action-input" title="Quantity Number" type="number" name="quantity" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
+                                        
+                                          <!-- Esta informacion se pasa al carrito -->  
+                                        <input type="hidden" id="p_id" name="p_id" value="{{item['id']}}">
+                                        <input type="hidden" id="name" name="name" value="{{item['name']}}">
+                                        <input type="hidden" id="image" name="image" value="{{item['image']}}">
+                                        <input type="hidden" id="price" name="price" value="{{item['price']}}">
+                                        <input type="hidden" id="brand" name="brand" value="{{item['brand']}}">
+                                        <input type="hidden" id="category" name="category" value="{{item['category']}}">
+                                        <input type="hidden" id="stock" name="stock" value="{{item['stock']}}">
+                                        <input type="hidden" id="pound" name="pound" value="{{item['pound']}}">
                                     </div>
+                                        <button class="save-button" type="submit">Edit</button>
+                                        
                                     </form>
                                             </div>
                                         </div>
@@ -501,6 +512,28 @@
         <!--=====================================
                     JS LINK PART END
         =======================================-->
+
+        <script>
+            function decreaseQuantity(button) {
+                const quantityInput = button.parentElement.querySelector(".action-input");
+                let quantity = parseInt(quantityInput.value);
+                if (quantity > 1) {
+                    quantity--;
+                }
+                quantityInput.value = quantity+1;
+            }
+        
+            function increaseQuantity(button) {
+                const quantityInput = button.parentElement.querySelector(".action-input");
+                let quantity = parseInt(quantityInput.value);
+                const stock = parseInt(quantityInput.getAttribute("data-stock"));
+                if (quantity < stock) {
+                    quantity++;
+                }
+                quantityInput.value = quantity-1;
+            };
+        
+        </script>
     </body>
 </html>
 
