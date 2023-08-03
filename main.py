@@ -230,7 +230,7 @@ def editpassword():
 
 @app.route("/orders")
 def orders():
-    # Fetch all orders with their respective products from the database
+    # Fetch all orders with their products from the DB
     completeOrders = getOrdersAndProductsController()
 
 
@@ -241,11 +241,18 @@ def orders():
     return render_template("orderlist.html", orders_with_products=completeOrders)
 
 
+# I created this function to delete the unwanted orders from the database
+@app.route("/cancel_order/<int:order_id>")
+def cancelOrder(order_id):
+    # Deletes the order from the database
+    deleteOrderController(order_id)
+    return redirect(request.referrer)
+
 
 
 @app.route("/addcart", methods=["POST"])
 def addcart():
-    # Get the relevant info for product to add to cart
+    # Get the info for product to add to cart
     p_id = request.form.get('p_id')
     name = request.form.get('name')
     image = request.form.get('image')
@@ -291,7 +298,7 @@ def checkout(message):
         return render_template("checkout.html", user=user, message=message)
 
     else:
-        # If customer isn't logged in, create session variable to tell us we're headed to checkout
+        # If customer isn't logged in, create session to tell us we are headed to checkout
         # Redirect us to login with message
         session['checkout'] = True
         return redirect("/wrong")
