@@ -155,31 +155,27 @@
                             <div class="col-lg-12">
                                 <div class="order-track">
                                     <ul class="order-track-list">
-                                        {% set previous_status_found = false %}
+                                        {% set current_status_index = ['Received', 'Processed', 'Shipped', 'Delivered'].index(order_data['order_info']['status']) %}
                                         {% for status in ['Received', 'Processed', 'Shipped', 'Delivered'] %}
-                                            {% if order_data['order_info']['status'] == status %}
-                                                {% set previous_status_found = true %}
+                                            {% if loop.index <= current_status_index %}
+                                                <li class="order-track-item active">
+                                                    <i class="icofont-check"></i>
+                                                    <span>{{ status | lower }}</span>
+                                                </li>
+                                            {% elif loop.index == current_status_index + 1 %}
                                                 <li class="order-track-item active">
                                                     <i class="icofont-check"></i>
                                                     <span>{{ status | lower }}</span>
                                                 </li>
                                             {% else %}
-                                                {% if previous_status_found %}
-                                                    <li class="order-track-item active">
-                                                        <i class="icofont-check"></i>
-                                                        <span>{{ status | lower }}</span>
-                                                    </li>
-                                                {% else %}
-                                                    <li class="order-track-item">
-                                                        <i class="icofont-close"></i>
-                                                        <span>{{ status | lower }}</span>
-                                                    </li>
-                                                {% endif %}
+                                                <li class="order-track-item">
+                                                    <i class="icofont-close"></i>
+                                                    <span>{{ status | lower }}</span>
+                                                </li>
                                             {% endif %}
                                         {% endfor %}
                                     </ul>
-                                    
-                                        </div>
+                                </div>
                                     </div>
                                     <div class="col-lg-5">
                                         <ul class="orderlist-details">
