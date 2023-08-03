@@ -230,7 +230,6 @@ def editpassword():
 
 @app.route("/orders")
 def orders():
-    # Fetch the customer ID from the session (you might need to adjust this based on your session structure)
     customer_id = session.get('customer')
 
     print(customer_id)
