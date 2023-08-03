@@ -1,26 +1,26 @@
 import pymysql
 from datetime import datetime, timedelta
 
-def getOrdersAndProductsModel():
+def getOrdersAndProductsModel(current_order_id):
     conn = pymysql.connect(host='sql9.freemysqlhosting.net', db='sql9607922',user='sql9607922', password='d7cwbda3De', port=3306)
     cur = conn.cursor()
 
     query = """
-        SELECT o.o_id, o.tracking_num, o.order_date, o.arrival_date, c.c_address_line1, c.c_address_line2, o.total_price, p.card_type,
-            prod.p_image, prod.p_name, prod.p_brand, con.amount, con.price, o.o_status
-        FROM orders o
-        JOIN customer c ON o.c_id = c.c_id
-        JOIN payment p ON o.payment_id = p.payment_id
-        JOIN contains con ON o.o_id = con.o_id
-        JOIN products prod ON con.p_id = prod.p_id
-        ORDER BY o.o_id, con.p_id
+    SELECT o.o_id, o.tracking_num, o.order_date, o.arrival_date, c.c_address_line1, c.c_address_line2, o.total_price, p.card_type,
+        prod.p_image, prod.p_name, prod.p_brand, con.amount, con.price, o.o_status
+    FROM orders o
+    JOIN customer c ON o.c_id = c.c_id
+    JOIN payment p ON o.payment_id = p.payment_id
+    JOIN contains con ON o.o_id = con.o_id
+    JOIN products prod ON con.p_id = prod.p_id
+    WHERE c.c_id = %s  -- Add this condition
+    ORDER BY o.o_id, con.p_id
     """
 
+    cur.execute(query, (current_order_id,))
 
-    cur.execute(query)
 
     orders_with_products = {}
-    current_order_id = None
 
     for row in cur.fetchall():
         order_id = row[0]

@@ -230,13 +230,16 @@ def editpassword():
 
 @app.route("/orders")
 def orders():
-    # Fetch all orders with their products from the DB
-    completeOrders = getOrdersAndProductsController()
+    # Fetch the customer ID from the session (you might need to adjust this based on your session structure)
+    customer_id = session.get('customer')
 
+    print(customer_id)
 
-    # This should update the status of the orders
+    # Fetch orders and products for the specific customer
+    completeOrders = getOrdersAndProductsController(customer_id)
+
+    # Update the status of the orders
     updateOrdersController()
-
 
     return render_template("orderlist.html", orders_with_products=completeOrders)
 

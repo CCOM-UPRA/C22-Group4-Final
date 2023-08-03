@@ -1,7 +1,7 @@
 from frontend_model.ordersModel import *
 
-def getOrdersAndProductsController():
-    return getOrdersAndProductsModel()
+def getOrdersAndProductsController(order_id):
+    return getOrdersAndProductsModel(order_id)
 
 def updateOrdersController():
     return updateOrdersModel()
