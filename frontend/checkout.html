@@ -209,7 +209,7 @@
                                         <input type="hidden" name="id" value="{{ key }}">
                                     <div class="view-add-group">
                                         
-                                        <input class="action-input" title="Quantity Number" type="number" name="quantity" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
+                                        <input class="action-input" title="Quantity Number" type="number" max="{{ item['stock'] }}" value="{{ item['quantity'] }}" data-stock="{{ item['stock'] }}">
                                         
                                           <!-- Esta informacion se pasa al carrito -->  
                                         <input type="hidden" id="p_id" name="p_id" value="{{item['id']}}">

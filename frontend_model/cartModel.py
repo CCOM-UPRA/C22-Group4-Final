@@ -25,7 +25,23 @@ def getCartModel():
 
 
 def addCartModel(dictitems):
-    # Add new product to cart using MagerDicts if cart already has items in
+    # Check if the quantity of each product is available in the session cart
+    if 'cart' in session:
+        for key, item in dictitems.items():
+            product_id = key
+            amount_to_add = item['quantity']
+
+            if key in session['cart']:
+                current_quantity_in_cart = int(session['cart'][key]['quantity'])
+                available_stock = int(session['cart'][key]['stock'])
+                total_quantity_after_adding = current_quantity_in_cart + amount_to_add
+
+                if total_quantity_after_adding > available_stock:
+                    # Handle insufficient stock here
+                    print(f"Insufficient stock for product with ID {product_id}. Available stock: {available_stock}, Requested quantity: {total_quantity_after_adding}")
+                    return  # Return to stop the addition
+
+    # If stock available, add new product to cart
     if 'cart' in session:
         for key, item in dictitems.items():
             if key in session['cart']:
@@ -37,10 +53,11 @@ def addCartModel(dictitems):
     else:
         session['cart'] = dictitems
 
-    # Update the session variables with the new additions
+    # Update the session 
     for key, item in dictitems.items():
         session['amount'] += item['quantity']
         session['total'] += item['total_price']
+
     return
 
 
