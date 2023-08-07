@@ -91,6 +91,8 @@ def sendToDatabaseModel(user, cart):
             # Check stock, if empty update the status to "Unavailable"
             check_query = f"SELECT p_stock FROM products WHERE p_id = {product_id}"
             cur.execute(check_query)
+
+            # This function verifies the remaining stock of the product and if there is none it changes the status
             remaining_stock = cur.fetchone()[0]
             if remaining_stock <= 0:
                 update_status_query = f"UPDATE products SET p_status = 'Unavailable' WHERE p_id = {product_id}"

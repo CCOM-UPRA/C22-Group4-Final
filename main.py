@@ -325,6 +325,8 @@ def invoice():
     order = getOrder(order_id)
     products = getOrderProducts(cart)
 
+    session.pop('cart', None)
+    
     return render_template("invoice.html", order=order, products=products, amount=amount)
 
 
